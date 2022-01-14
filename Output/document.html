@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script>
+         function calcolaRadice(val)
+         {
+             let x = Math.sqrt(val);
+             alert('La radice quadrata di ' + val + ' = ' + x);
+             console.log(val);
+             console.log(x);
+         }
+      </script>
+    </head>
+    <body>
+    <form method="get">
+        <label for="radice">Inserisci un numero:</label>
+        <input type="text" name="valore"  id="radice">
+        <br>
+        <!--Al momento non preoccupatevi se non conoscete la parola chiave this.
+        Il codice prende il numero digitato nella TextBox e lo passa alla
+        funzione calcolaRadice-->
+        <button onclick="calcolaRadice(this.form.valore.value)">Calcola</button>
+    </form>
+    <br>
+    <br>
+    <p>Never call document.write after the document has finished loading.
+        It will overwrite the whole document.</p>    
+    <hr>
+    <script>
+        /*document.write(5 + 6 * 2);*/
+    </script>
+    </body>
+</html> 

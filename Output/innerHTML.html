@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prorprietà innerHTML</title>
+    <script>
+        function changeText()
+        {
+            /*--Vedremo successivamente le variabili, per ora ti basta sapere
+            che con l'istruzione let introduciamo la variabile x. Tale variabile
+            grazie al simbolo di assegnamento(=) conterrà un riferimento al 
+            paragrafo avente id="p1"--*/
+            let x = document.getElementById("p1");
+            x.innerHTML="Text Changed.";
+            x.style.backgroundColor='red';
+            document.getElementById("div").style.border="3px solid green";
+            document.getElementById("div").style.backgroundColor="yellow";
+        }
+    </script>
+</head>
+<body>
+    <!--GLI id DEVONO ESSERE UNIVOCI-->
+    <p id="p1">Paragrafo uno</p>
+    <p id="p2">Paragrafo due</p>
+    <div id="div">Div uno</div>
+    <br>
+    <button onclick="changeText()">Click me!</button>
+    <script>
+        /*--Le operazioni aritmetiche che vedremo più avanti per quanto
+        riguarda le precedenze tra gli operatori queste seguono le normali regole
+        della matematica. Nell'esempio prima viene effettuata la moltiplicazione
+        poi la somma. Per modificare la precedenza tra gli operatori occorre
+        aggiungere le parentesi tonde. Ad esempio (7+9)*2. In questo caso
+        prima viene effettuata la somma poi la moltiplicazione.--*/
+        document.getElementById("p2").innerHTML=7+9*2
+    </script>
+</body>
+</html>
