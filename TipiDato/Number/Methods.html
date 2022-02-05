@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metodi di Number</title>
+<script>
+    function metodi()
+    {
+        /*--Il metodo toString() restituisce un numero come stringa.
+            Tutti i metodi numerici possono essere utilizzati su qualsiasi tipo di numero 
+            (letterali, variabili o espressioni):*/
+        let x = 670;
+        console.log('toString: ' + x.toString());
+        console.log('toString: ' + (170).toString());
+        console.log('toString: ' + (170+3+6).toString());
+        /*--toExponential() restituisce una stringa, con un numero arrotondato e scritto 
+            usando la notazione esponenziale.
+            Un parametro definisce il numero di caratteri dopo il punto decimale:
+            Il parametro è facoltativo. Se non lo specifichi, 
+            JavaScript non arrotonda il numero.*/
+        let y = 49.6566;
+        console.log('toExponential: ' + y.toExponential(2));
+        console.log('toExponential: ' + y.toExponential(4));
+        console.log('toExponential: ' + y.toExponential(6));
+        /*--toFixed() restituisce una stringa, 
+            con il numero scritto con un numero specificato di decimali:
+            toFixed(2) è perfetto per lavorare con i soldi.*/
+        let z = 19.456;
+        console.log('toFixed(0): ' + z.toFixed(0));
+        console.log('toFixed(2): ' + z.toFixed(2));
+        console.log('toFixed(4): ' + z.toFixed(4));
+        console.log('toFixed(6): ' + z.toFixed(6));
+        /*--toPrecision() restituisce una stringa, con un numero scritto 
+            con una lunghezza specificata:*/
+        let a = 19.6568;
+        console.log('toPrecision(): '  + a.toPrecision());
+        console.log('toPrecision(2): ' + a.toPrecision(2));
+        console.log('toPrecision(4): ' + a.toPrecision(4));
+        console.log('toPrecision(6): ' + a.toPrecision(6));
+        /*--valueOf() restituisce un numero come numero.
+        In JavaScript, un numero può essere un valore primitivo (typeof = numero) 
+        o un oggetto (typeof = oggetto).Il metodo valueOf() viene utilizzato 
+        internamente in JavaScript per convertire gli oggetti Number in valori primitivi.
+        Non c'è motivo di usarlo nel tuo codice. Tutti i tipi di dati JavaScript 
+        hanno un metodo valueOf() e toString().*/
+        let b = 123;
+        console.log('valueOf: ' + b.valueOf());
+        console.log('valueOf: ' + (123).valueOf());
+        console.log('valueOf: ' + (100+36).valueOf());
+        /*--METODI PER CONVERTIRE VARIABILI IN NUMERI
+            Esistono 3 metodi JavaScript che possono essere utilizzati per convertire 
+            le variabili in numeri:
+            Il metodo Number()
+            Il metodo parseInt()
+            Il metodo parseFloat()
+            Questi metodi non sono metodi numerici, ma metodi JavaScript globali.*/
+            /*Number() può essere utilizzato per convertire le variabili JavaScript in numeri:
+            Number() può anche convertire una data in un numero.
+            Il metodo Number() restituisce il numero di millisecondi dall'1.1.1970.*/
+            console.log('******NUMBER INIZIO******');
+            console.log(Number(true));
+            console.log(Number(false));
+            console.log(Number("10"));
+            console.log(Number("  10"));
+            console.log(Number("10  "));
+            console.log(Number(" 10  "));
+            console.log(Number("10.33"));
+            console.log(Number("10,33"));
+            console.log(Number("10 33"));
+            console.log(Number("John"));
+            let c = new Date("2022-01-30");
+            console.log('Millisecondi: ' + Number(c));
+            console.log('******NUMBER FINE******');
+            /*--parseInt() analizza una stringa e restituisce un numero intero. 
+            Gli spazi sono consentiti. Viene restituito solo il primo numero:
+            Se il numero non può essere convertito, viene restituito NaN (Not a Number).*/
+            console.log('******parseInt() inizio*******')
+            console.log(parseInt("-10"));
+            console.log(parseInt("-10.33"));
+            console.log(parseInt("10"));
+            console.log(parseInt("10.33"));
+            console.log(parseInt("10 20 30"));
+            console.log(parseInt("10 years"));
+            console.log(parseInt("years 10"));
+            console.log('******parseInt() fine*******')
+            /*--parseFloat() analizza una stringa e restituisce un numero. 
+               Gli spazi sono consentiti. Viene restituito solo il primo numero:*/
+            console.log('******parseFloat() inizio*******')
+            console.log(parseFloat("10"));
+            console.log(parseFloat("10.33"));
+            console.log(parseFloat("10 20 30"));
+            console.log(parseFloat("10 years"));
+            console.log(parseFloat("years 20"));
+            console.log('******parseFloat() fine*******')
+            /*--MAX_VALUE restituisce il numero più grande possibile in JavaScript.
+                per andare oltre dobbiamo usare BigInt (poco utilizzato)
+                MIN_VALUE restituisce il numero più piccolo possibile in JavaScript.*/
+            let d = Number.MAX_VALUE;
+            let e = Number.MIN_VALUE;
+            console.log('MAX_VALUE: ' + d);
+            console.log('MIN_VALUE: ' + e);
+            let f = Number.POSITIVE_INFINITY;
+            let g = Number.NEGATIVE_INFINITY;
+            console.log('POSITIVE_INFINITY: ' + f);
+            console.log('NEGATIVE_INFINITY: ' + g);
+            /*--NaN*/
+            let h = Number.NaN;//Return NaN
+            /*--NaN è una parola riservata JavaScript che indica che un numero non è 
+            un numero valido. Il tentativo di eseguire operazioni aritmetiche 
+            con una stringa non numerica risulterà NaN (not a number):*/
+            let i = 10 / 'pippo' //Return NaN
+
+    }
+</script>
+</head>
+<body onload="metodi()">
+</body>
+</html>
