@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function metodi()
+        {
+           /*--JavaScript String Padding
+           ECMAScript 2017 ha aggiunto due metodi String: padStart e padEnd 
+           per supportare il riempimento all'inizio e alla fine di una stringa.*/
+           let text = "50";
+           let padded = text.padStart(5,0);
+           console.log('PADSTART: '+padded);
+           console.log('PADEND: '+ text.padEnd(5,0));
+           /*--Extracting String Characters
+           Il metodo charAt() restituisce il carattere in un indice 
+           (posizione) specificato in una stringa:*/
+           let text1 = "HELLO WORLD";
+           let char = text1.charAt(0);
+           console.log('charAt(): '+char);
+           /*--Il metodo charCodeAt() restituisce l'unicode del carattere in un indice 
+           specificato in una stringa:Il metodo restituisce un codice 
+           UTF-16 (un numero intero compreso tra 0 e 65535).*/
+           let text2 = "HELLO WORLD";
+           let char1 = text2.charCodeAt(0);
+           console.log('charCodeAt(): '+char1);
+           /*--ECMAScript 5 (2009) consente l'accesso alle proprietà [ ] sulle stringhe:*/
+           console.log('PROPERTY ACCESS: '+text2[4]);
+           /*--JavaScript String split()
+           A string can be converted to an array with the split() method:*/
+           let testo = 'Oggi è una bella giornata';
+           let array = testo.split(' ');
+           console.log('SPLIT: '+array)
+        }
+    </script>
+</head>
+<body onload="metodi()">
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function metodi()
+        {
+           /*--Replacing String Content
+           Il metodo replace() sostituisce un valore specificato 
+           con un altro valore in una stringa:
+           Il metodo replace() non cambia la stringa su cui viene chiamato.
+           Il metodo replace() restituisce una nuova stringa.
+           Il metodo replace() sostituisce solo la prima corrispondenza
+           Se vuoi sostituire tutte le corrispondenze, usa un'espressione regolare 
+           con il flag /g impostato. Vedere gli esempi di seguito.*/
+           let text = "Per favore visita il sito Microsoft!";
+           console.log('REPLACE: '+ text.replace('Microsoft','W3Schools'));
+           console.log('LA STRINGA ORIGINARIA NON VIENE MODIFICATA: '+text);
+           text = 'Please visit Microsoft and Microsoft!';
+           console.log('REPLACE: '+ text.replace('Microsoft','W3Schools'));
+           /*--Per impostazione predefinita, il metodo replace() fa distinzione 
+               tra maiuscole e minuscole. La scrittura di MICROSOFT non funzionerà:*/
+           text = 'Please visit Microsoft!';
+           console.log('REPLACE: '+ text.replace('MICROSOFT','W3Schools'));
+           /*--Per sostituire la distinzione tra maiuscole e minuscole, utilizzare un'espressione 
+               regolare con un flag /i (insensitive):*/
+            let newText = text.replace(/MICROSOFT/i, "W3Schools");
+            console.log('REPLACE: '+newText);
+            /*--Per sostituire tutte le corrispondenze, usa un'espressione
+            regolare con un flag /g (global match):*/
+            text = 'Please visit Microsoft and Microsoft!';
+            newText = text.replace(/Microsoft/g, "W3Schools");
+            console.log('REPLACE: '+newText);
+            /*--Converting to Upper and Lower Case. A string is converted to upper case 
+                with toUpperCase():A string is converted to lower case with 
+                toLowerCase():*/
+            text = "Ciao Mondo!";
+            console.log('UPPER CASE: '+ text.toUpperCase());
+            console.log('LOWER CASE: '+ text.toLowerCase());
+            /*--JavaScript String concat()
+            concat() unisce due o più stringhe:*/
+            let text1 = "Hello";
+            let text2 = "World";
+            let text3 = text1.concat(" ", text2);
+            console.log('CONCAT: '+ text3);
+            /*--TRIM The trim() method removes whitespace from both sides of a string:*/
+            text1 = "      Hello World!      ";
+            console.log('TRIM: '+text1.trim());
+
+        }
+    </script>
+</head>
+<body onload="metodi()">
+    
+</body>
+</html>
