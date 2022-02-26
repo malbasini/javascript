@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function sort()
+        {
+           /*--Il metodo sort() ordina un array in ordine alfabetico:*/
+           const fruits = ["Banana", "Orange", "Apple", "Mango"];
+           fruits.sort();
+           console.log('Metodo sort(): ' + fruits.toString());
+           /*--Il metodo reverse() inverte gli elementi in un array.Puoi usarlo 
+               per ordinare un array in ordine decrescente:*/
+           fruits.sort();
+           fruits.reverse();
+           console.log('Metodo reverse(): ' + fruits.toString());
+           /*--Per impostazione predefinita, la funzione sort() ordina i valori come stringhe.
+               Funziona bene per le stringhe ("Apple" viene prima di "Banana").
+               Tuttavia, se i numeri sono ordinati come stringhe, 
+               "25" è maggiore di "100", perché "2" è maggiore di "1".
+               Per questo motivo, il metodo sort() produrrà un risultato 
+               errato durante l'ordinamento dei numeri.
+               Puoi risolvere questo problema fornendo una funzione di confronto:*/
+            const points = [40, 100, 1, 5, 25, 10];
+            points.sort(function(a, b){return a - b});
+            console.log('Sorting number ascending: ' + points.toString());
+            /*--Usa lo stesso trucco per ordinare un array discendente:*/
+            const points1 = [40, 100, 1, 5, 25, 10];
+            points1.sort(function(a, b){return b - a});
+            console.log('Sorting number descending: ' + points1.toString());
+            /************************************************************************/
+            /*LA FUNZIONE COMPARE
+              Lo scopo della funzione di confronto è definire un ordinamento alternativo.
+              La funzione di confronto dovrebbe restituire un valore 
+              negativo, zero o positivo, a seconda degli argomenti:
+              function(a, b){return a - b}
+              Quando la funzione sort() confronta due valori, invia i valori alla 
+              funzione di confronto e ordina i valori in base al valore restituito 
+              (negativo, zero, positivo).
+              Se il risultato è negativo a viene ordinato prima di b.
+              Se il risultato è positivo b viene ordinato prima di a.
+              Se il risultato è 0 non vengono apportate modifiche all'ordinamento dei due valori.
+              Esempio:
+              La funzione compare confronta tutti i valori nell'array, 
+              due valori alla volta (a, b).
+              Quando si confrontano 40 e 100, il metodo sort() chiama la 
+              funzione compare function(40, 100).
+              La funzione calcola 40 - 100 (a - b) e poiché il risultato è negativo 
+              (-60), la funzione di ordinamento ordinerà 40 come un valore inferiore a 100.
+              finito il primo step la funzione compare prenderà in esame i valori 40 e 1 e
+              siccome il risultato è positivo (+39) 1 verrà ordinato prima di 40 e così via.*/
+
+              /*--Non ci sono funzioni integrate per trovare il valore massimo o minimo 
+                  in un array.Tuttavia, dopo aver ordinato una matrice (array), 
+                  è possibile utilizzare l'indice per ottenere 
+                  i valori più alti e più bassi.*/
+            const points2 = [40, 100, 1, 5, 25, 10];
+            points2.sort(function(a, b){return a - b});
+                // ora points2[0] contiene il valore più basso
+                // e points2[points2.length-1] contiene il valore più alto
+            const points3 = [40, 100, 1, 5, 25, 10];
+            points3.sort(function(a, b){return b - a});
+                // ora points3[0] contiene il valore più alto
+                // e points3[points3.length-1] contiene il valore più basso
+
+
+            console.log('Valore Max in un array: '+ myArrayMax(points3));
+            console.log('Valore Min in un array: '+ myArrayMin(points3));
+            console.log('Valore Max in un array: '+ myArrayMaxValue(points3));
+            console.log('Valore Min in un array: '+ myArrayMinValue(points3));
+        }
+        /*--L'ordinamento di un intero array è un metodo molto inefficiente 
+            se si desidera trovare solo il valore più alto (o più basso).
+            Puoi usare Math.max.apply per trovare il numero più alto in un array.
+            Math.max.apply(null, [1, 2, 3]) è equivalente a Math.max(1, 2, 3).*/
+        function myArrayMax(arr) {
+            return Math.max.apply(null, arr);
+          }
+        /*--Math.min.apply(null, [1, 2, 3]) è equivalente a Math.min(1, 2, 3).*/
+        function myArrayMin(arr) {
+            return Math.min.apply(null, arr);
+        }
+        /*--La soluzione più veloce è utilizzare un metodo "fatto in casa".
+            Questa funzione scorre un array confrontando ogni valore con il valore 
+            più alto trovato:*/
+        function myArrayMaxValue(arr) {
+                let len = arr.length;
+                let max = -Infinity;
+                while (len--) {
+                  if (arr[len] > max) {
+                    max = arr[len];
+                  }
+                }
+                return max;
+        }
+        function myArrayMinValue(arr) {
+            let len = arr.length;
+            let min = Infinity;
+            while (len--) {
+              if (arr[len] < min) {
+                min = arr[len];
+              }
+            }
+            return min;
+          }
+    </script>
+</head>
+<body onload="sort()">
+    <h1>ORDINAMENTO IN ORDINE CASUALE</h1>
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+    <script>
+    /*--ORDINAMENTO DI UN ARRAY IN ORDINE CASUALE*/
+    const points = [40, 100, 1, 5, 25, 10];
+    document.getElementById("demo").innerHTML = points;  
+    function myFunction() {
+        points.sort(function(a, b){return 0.5 - Math.random()});
+        document.getElementById("demo").innerHTML = points;
+    }
+    </script>
+    <h1>ORDINAMENTO DI UN OGGETTO</h1>
+    <button onclick="myFunctionOrder()">Ordinamento in base all'anno</button>
+    <br>
+    <br>
+    <button onclick="myFunctionOrder2()">Ordinamento in base a stringhe</button>
+    <p id="demo2"></p>
+    <script>
+    /*--Gli array JavaScript spesso contengono oggetti:*/
+        const cars = [
+        {type:"Volvo", year:2016},
+        {type:"Saab", year:2001},
+        {type:"BMW", year:2010}
+        ];
+        displayCars();
+        function displayCars() {
+            document.getElementById("demo2").innerHTML =
+            cars[0].type + " " + cars[0].year + "<br>" +
+            cars[1].type + " " + cars[1].year + "<br>" +
+            cars[2].type + " " + cars[2].year;
+        }
+        /*--Anche se gli oggetti hanno proprietà di tipi di dati diversi, 
+        il metodo sort() può essere utilizzato per ordinare l'array.La soluzione 
+        è scrivere una funzione di confronto per confrontare i valori della proprietà:*/
+       function myFunctionOrder() {
+            cars.sort(function(a, b){return a.year - b.year});
+            displayCars();
+        }
+        function myFunctionOrder2() {
+            cars.sort(function(a, b){
+            let x = a.type.toLowerCase();
+            let y = b.type.toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+            });
+        displayCars();
+      }
+    </script>
+</body>
+</html>

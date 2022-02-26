@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function metodi()
+        {
+           /*--Il metodo concat() crea un nuovo array unendo (concatenando) gli array esistenti:*/
+           const ragazze = ['Sandra','Elisa','Alessandra'];
+           const ragazzi = ['Marco', 'Ettore','Fabrizio'];
+           const merge = ragazze.concat(ragazzi);
+           console.log(merge.toString());
+           /*--Il metodo concat() può accettare un numero qualsiasi di argomenti dell'array:*/
+           const arr1 = ["Cecilie", "Lone"];
+           const arr2 = ["Emil", "Tobias", "Linus"];
+           const arr3 = ["Robin", "Morgan"];
+           const myChildren = arr1.concat(arr2, arr3);
+           /*--Il metodo splice() può essere utilizzato per aggiungere nuovi elementi a un array:
+           Il primo parametro (2) definisce la posizione in cui devono essere 
+           aggiunti nuovi elementi (spliced). Il secondo parametro (0) definisce 
+           quanti elementi devono essere rimossi. Il resto dei parametri ("Lemon" , "Kiwi") 
+           definisce i nuovi elementi da aggiungere.Il metodo splice() 
+           restituisce un array con gli elementi eliminati:*/
+           const fruits = ["Banana", "Orange", "Apple", "Mango"];
+           fruits.splice(2, 0, "Lemon", "Kiwi");
+           console.log(fruits.join('-'));
+           const fruits_0 = ["Banana", "Orange", "Apple", "Mango"];
+           const removed = fruits_0.splice(2,2,'Lemon','Kiwi');
+           console.log(removed.toString());
+           /*--Con un'impostazione intelligente dei parametri, puoi usare splice() 
+           per rimuovere elementi senza lasciare "buchi" nell'array
+           Il primo parametro (0) definisce la posizione in cui devono essere 
+           aggiunti nuovi elementi (uniti). Il secondo parametro (1) definisce 
+           quanti elementi devono essere rimossi.Il resto dei parametri viene omesso. 
+           Non verranno aggiunti nuovi elementi.*/
+           const fruits_1 = ["Banana", "Orange", "Apple", "Mango"];
+           const remove = fruits_1.splice(2, 2);
+           console.log(remove.toString())
+           fruits_1.splice(2,2,'Apple','Mango')
+           console.log(fruits_1.toString());
+           /*--Il metodo slice() taglia un pezzo di un array in un nuovo array.Questo 
+               esempio taglia una parte di un array a partire dall'elemento dell'array 1 
+               ("Orange") Il metodo slice() crea un nuovo array. Il metodo slice() 
+               non rimuove alcun elemento dall'array di origine.:*/
+            const newArray = fruits_1.slice(1);
+            console.log(newArray.toString());
+            /*--Il metodo slice() può accettare due argomenti come slice(1, 3).
+                Il metodo seleziona quindi gli elementi dall'argomento start e fino 
+                a (ma escluso) l'argomento end.*/
+            const array1 = fruits_1.slice(1,3);
+            console.log(array1.toString());
+
+        }
+    </script>
+</head>
+<body onload="metodi()">
+    
+</body>
+</html>

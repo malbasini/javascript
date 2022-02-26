@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function loop()
+        {
+            //Un modo per scorrere un array è usare un ciclo for:
+            const fruits = ["Banana", "Orange", "Apple", "Mango"];
+            let fLen = fruits.length;
+            let text = "<ul>";
+            for (let i = 0; i < fLen; i++) 
+            {
+                text += "<li>" + fruits[i] + "</li>";
+            }
+            text += "</ul>";
+            console.log(text);
+
+            //Puoi anche usare la funzione Array.forEach():
+            text = "<ul>";
+            fruits.forEach(myFunction);
+            text += "</ul>";
+            function myFunction(value) {
+                text += "<li>" + value + "</li>";
+            }
+            console.log(text);
+        }
+    </script>
+</head>
+<body onload="loop()">
+    
+</body>
+</html>
