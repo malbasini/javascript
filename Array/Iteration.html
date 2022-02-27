@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function iteration()
+        {
+          /*Il metodo forEach() chiama una funzione (una funzione di callback) 
+          una volta per ogni elemento dell'array.*/
+          const numbers = [45, 4, 9, 16, 25];
+          let txt = "";
+          numbers.forEach(myFunction);
+
+          function myFunction(value, index, array) {
+            txt += value + ",";
+          }
+          console.log('Metodo forEach: ' + txt);
+          /*Nota che la funzione accetta 3 argomenti:
+
+            Il valore dell'array
+            L'indice 
+            L'array stesso
+
+            L'esempio precedente utilizza solo il parametro value. 
+            L'esempio può essere riscritto utilizzando il solo parametro value:*/
+
+            /*Il metodo map() crea un nuovo array eseguendo una funzione su ogni elemento dell'array.
+              Il metodo map() non esegue la funzione per gli elementi dell'array senza valori.
+              Il metodo map() non cambia l'array originale.
+              Questo esempio moltiplica ogni valore dell'array per 2:*/
+            txt = ' ';
+            const numbers1 = [45, 4, 9, 16, 25];
+            const numbers2 = numbers1.map(myFunction2);
+            
+            function myFunction2(value, index, array) {
+                txt += (value * 2) + ",";
+                return value * 2;
+            }
+            console.log('metodo map(): '+ txt);
+            /*Nota che la funzione accetta 3 argomenti:
+
+            Il valore dell'array
+            L'indice 
+            L'array stesso
+
+            L'esempio precedente utilizza solo il parametro value. 
+            L'esempio può essere riscritto utilizzando il solo parametro value:*/
+
+            /*Il metodo filter() crea un nuovo array con elementi dell'array che supera un test.
+              Questo esempio crea una nuova matrice da elementi con un valore maggiore di 18:*/
+            const numbers3 = [45, 4, 9, 16, 25];
+            const over18 = numbers3.filter(myFunction3);
+            console.log('Metodo filter(): ' + over18);
+              
+            function myFunction3(value, index, array) {
+                return value > 18;
+            }
+            /*Nota che la funzione accetta 3 argomenti:
+
+            Il valore dell'array
+            L'indice 
+            L'array stesso
+
+            L'esempio precedente utilizza solo il parametro value. 
+            L'esempio può essere riscritto utilizzando il solo parametro value:*/
+
+            /*Il metodo reduce() esegue una funzione su ciascun elemento dell'array 
+            per produrre (ridurre a) un singolo valore.
+            Il metodo reduce() funziona da sinistra a destra nell'array. 
+            Vedi anche reduceRight().
+            Il metodo reduce() non riduce l'array originale.
+            Questo esempio trova la somma di tutti i numeri in un array:*/
+
+            const numbers4 = [45, 4, 9, 16, 25];
+            let sum = numbers4.reduce(myFunction4);
+            console.log('Metodo reduce(): ' + sum);
+
+            function myFunction4(total, value, index, array) {
+                return total + value;
+            }
+            /*Nota che la funzione accetta 4 argomenti:
+
+             Il totale (il valore iniziale/il valore precedentemente restituito)
+             Il valore dell'array
+             L'indice dell'array
+             L'array stesso
+             L'esempio precedente non utilizza i parametri dell'indice e dell'array 
+             e può essere riscritto.*/
+
+             /*Il metodo reduceRight() esegue una funzione su ciascun elemento dell'array 
+             per produrre (ridurre a) un singolo valore.
+             reduceRight() funziona da destra a sinistra nell'array. Vedi anche reduce().
+             Il metodo reduceRight() non riduce l'array originale.
+
+            Questo esempio trova la somma di tutti i numeri in una matrice:*/
+            const numbers5 = [45, 4, 9, 16, 25];
+            sum = numbers5.reduceRight(myFunction5);
+            console.log('Metodo reduceRight(): ' + sum);
+            function myFunction5(total, value, index, array) {
+            return total + value;
+            }
+
+            /*Il metodo every() controlla se tutti i valori dell'array superano un test.
+
+             Questo esempio controlla se tutti i valori dell'array sono maggiori di 18:*/
+
+             const numbers6 = [45, 4, 9, 16, 25];
+             let allOver18 = numbers6.every(myFunction6);
+             console.log('Metodo every(): '+allOver18);
+             function myFunction6(value, index, array) {
+                return value > 18;
+            }
+
+            /*Il metodo some() controlla se alcuni valori dell'array superano un test.
+              Questo esempio controlla se alcuni valori dell'array sono maggiori di 18:*/
+            const numbers7 = [45, 4, 9, 16, 25];
+            let someOver18 = numbers7.some(myFunction7);
+            console.log('Metodo some(): ' + someOver18);  
+            function myFunction7(value, index, array) {
+                return value > 18;
+            } 
+            
+            /*Il metodo indexOf() cerca in un array un valore di elemento e ne restituisce 
+            la posizione.
+            Nota: il primo elemento ha la posizione 0, il secondo elemento ha la posizione 1 
+            e così via.*/
+            const fruits = ["Apple", "Orange", "Apple", "Mango"];
+            let position = fruits.indexOf("Apple") + 1;
+            console.log('Metodo indexOf(): '+ position);
+            /*Syntax
+             array.indexOf(item, start)
+            item	Required. The item to search for.
+            start	Optional. Where to start the search. Negative values will start 
+            at the given position counting from the end, and search to the end.
+            Array.indexOf() returns -1 if the item is not found.
+            If the item is present more than once, it returns the position of the 
+            first occurrence.*/
+
+            /*Array.lastIndexOf() è uguale a Array.indexOf(), ma restituisce la posizione dell'ultima 
+            occorrenza dell'elemento specificato.*/
+            position = fruits.lastIndexOf("Apple") + 1;
+            console.log('Metodo lastIndexOf(): '+ position);
+            /*array.lastIndexOf(item, start)
+             item	Required. The item to search for
+             start	Optional. Where to start the search. 
+             Negative values will start at the given position counting from the end, 
+             and search to the beginning*/
+
+             /*Il metodo find() restituisce il valore del primo elemento dell'array 
+             che supera una funzione di test.
+             Questo esempio trova (restituisce il valore di) il primo elemento maggiore di 18:*/
+             const numbers8 = [4, 9, 16, 25, 29];
+             let first = numbers8.find(myFunction8);
+             console.log('Metodo find(): '+ first);
+             function myFunction8(value, index, array) {
+                return value > 18;
+            }
+            /*Il metodo findIndex() restituisce l'indice del primo elemento dell'array 
+            che supera una funzione di test.
+            Questo esempio trova l'indice del primo elemento maggiore di 18:*/
+            const numbers9 = [4, 9, 16, 25, 29];
+            first = numbers9.findIndex(myFunction9);
+            console.log('Metodo findIndex(): '+first)
+            function myFunction9(value, index, array) {
+                return value > 18;
+            }
+
+            /*The Array.from() method returns an Array object from any object 
+            with a length property or any iterable object.*/
+            const arr = Array.from("123456789");
+            console.log(arr);
+
+            /*Il metodo Array.keys() restituisce un oggetto Array Iterator 
+            con le chiavi di un array.*/
+            const keys = fruits.keys();
+            txt='';
+            for (let x of keys) {
+            txt += x + ",";
+            }
+            console.log('Metodo Array.Keys(): '+txt);
+
+            /*ECMAScript 2016 ha introdotto Array.includes() negli array. 
+            Questo ci permette di verificare se un elemento è presente in un array 
+            (incluso NaN, a differenza di indexOf).*/
+            let bool = fruits.includes("Mango"); // is true
+            console.log('Metodo include(): '+bool);
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="iteration()">
+        <h1>JavaScript Arrays</h1>
+        <h2>The entries() method</h2>
+
+        <p>entries() returns an Array Iterator object with key/value pairs:</p>
+
+        <p id="demo"></p>
+
+        <script>
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        const f = fruits.entries();
+
+        for (let x of f) {
+        document.getElementById("demo").innerHTML += x + "<br>";
+        }
+</script>
+
+        <p>The entries() method is not supported in Internet Explorer 11 (or earlier).</p>
+</body>
+</html>
