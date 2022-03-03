@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function metodi()
+        {
+           /*Quando viene creato un oggetto Date, una serie di metodi consente di operare su di esso.
+             I metodi della data consentono di ottenere e impostare l'anno, il mese, 
+             il giorno, l'ora, i minuti, i secondi e i millisecondi degli oggetti Date, 
+             utilizzando l'ora locale o l'ora UTC (universal o GMT).
+             JavaScript genererà (per impostazione predefinita) le date in formato 
+             stringa di testo completo. Quando visualizzi un oggetto Date in HTML, 
+             viene automaticamente convertito in una stringa, con il metodo toString().*/
+
+             /*Il metodo toUTCString() converte una data in una stringa UTC 
+             (uno standard di visualizzazione della data).*/
+             const months = ["January", "February", "March", "April", "May", "June", "July", 
+             "August", "September", "October", "November", "December"];
+             const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+             const d1 = new Date();
+             console.log('Metodo toUTCString(): ' + d1.toUTCString());
+             /*Il metodo toDateString() converte una data in un formato più leggibile:*/
+             const d2 = new Date();
+             console.log('Metodo toDateString(): ' + d2.toDateString());
+             /*The toISOString() method converts a Date object to a string, 
+             using the ISO standard format:*/
+             const d3 = new Date();
+             console.log('Metodo toISOString(): ' + d3.toISOString());
+             /*--METODI GET DATE */
+             const d = new Date();
+             console.log('Metodo getTime(): '+d.getTime());
+             console.log('Metodo getFullYear(): '+d.getFullYear());
+             let month = months[d.getMonth()];
+             console.log(month);
+             console.log('Metodo getDate(): '+d.getDate());
+             console.log('Metodo getHours(): '+d.getHours());
+             console.log('Metodo getMinutes(): '+d.getMinutes());
+             console.log('Metodo getSeconds(): '+d.getSeconds());
+             console.log('Metodo getMilliseconds(): '+d.getMilliseconds());
+             let day = days[d.getDay()];
+             console.log(day);
+             /*--METODI SET DATE */
+             console.log('Metodo setFullYear(): '+d.setFullYear(2021));
+             /*--Il metodo setFullYear() può opzionalmente impostare mese e giorno:*/
+             console.log('Metodo setMonth(): '+d.setMonth(10));
+             console.log('Metodo setDate(): '+d.setDate(15));
+             console.log('Metodo setHours(): '+d.setHours(23));
+             console.log('Metodo setMinutes(): '+d.setMinutes(59));
+             console.log('Metodo setSeconds(): '+d.setSeconds(59));
+
+
+
+        }
+    </script>
+</head>
+<body onload="metodi()">
+    
+</body>
+</html>
