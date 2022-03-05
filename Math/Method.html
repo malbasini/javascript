@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Oggetto Math</title>
+    <script>
+    /*Questa funzione JavaScript restituisce sempre un numero casuale compreso 
+    tra min (incluso) e max (escluso):*/
+    function getRndInteger1(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    }
+    /*Questa funzione JavaScript restituisce sempre un numero casuale compreso 
+    tra min e max (entrambi inclusi):*/
+    function getRndInteger2(min, max) {
+       return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+    </script>
 </head>
 <body onload="metodi()">
     <script>
