@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Oggetto Math</title>
+</head>
+<body onload="metodi()">
+    <script>
+        function metodi()
+        {
+           /*Math.round(x) restituisce l'intero più vicino:*/
+            console.log('Metodo round(): ' + Math.round(4.6));
+            console.log('Metodo round(): ' + Math.round(4.5));
+            console.log('Metodo round(): ' + Math.round(4.4));
+           /*Math.ceil(x) restituisce il valore di x arrotondato per eccesso al numero 
+             intero più vicino:*/
+            console.log('Metodo ceil(): ' + Math.ceil(4.4));
+            console.log('Metodo ceil(): ' + Math.ceil(4.2));
+            console.log('Metodo ceil(): ' + Math.ceil(-4.4));
+           /*Math.floor(x) restituisce il valore di x arrotondato per difetto 
+             al numero intero più vicino:*/
+            console.log('Metodo floor(): ' + Math.floor(4.9));
+            console.log('Metodo floor(): ' + Math.floor(4.6));
+            console.log('Metodo floor(): ' + Math.floor(-4.9));
+            /*Math.trunc(x) restituisce la parte intera di x:*/
+            console.log('Metodo trunc(): ' + Math.trunc(4.9));
+            console.log('Metodo trunc(): ' + Math.trunc(4.6));
+            console.log('Metodo trunc(): ' + Math.trunc(-4.9));
+            /*Math.sign(x) restituisce se x è negativo, nullo o positivo:*/
+            console.log('Metodo sign(): ' + Math.sign(4));
+            console.log('Metodo sign(): ' + Math.sign(-4));
+            console.log('Metodo sign(): ' + Math.sign(0));
+            /*Math.pow(x, y) restituisce il valore di x alla potenza di y:*/
+            console.log('Metodo pow(): ' + Math.pow(8,2));
+            /*--Math.sqrt(x) restituisce la radice quadrata di x:*/
+            console.log('Metodo sqrt(): ' + Math.sqrt(100));
+            /*Math.abs(x) restituisce il valore assoluto (positivo) di x:*/
+            console.log('Metodo abs(): ' + Math.abs(-9.8));
+            /*Math.sin(x) restituisce il seno (un valore compreso tra -1 e 1) 
+            dell'angolo x (espresso in radianti). Se vuoi usare i gradi invece dei radianti, 
+            devi convertire i gradi in radianti:
+            Angolo in radianti = Angolo in gradi x PI / 180.*/
+            console.log('Metodo sin(): '  + Math.sin(90 * Math.PI / 180));
+            // returns 1 (il seno di 90 gradi))
+            /*Math.cos(x) restituisce il coseno (un valore compreso tra -1 e 1) 
+            dell'angolo x (espresso in radianti). Se vuoi usare i gradi invece dei radianti, 
+            devi convertire i gradi in radianti:
+            Angolo in radianti = Angolo in gradi x PI / 180.*/ 
+            console.log('Metodo cos(): '  + Math.cos(0 * Math.PI / 180));
+            // returns 1 (il coseno di 0 gradi))
+            /*Math.min() e Math.max() possono essere utilizzati per trovare il valore 
+              più basso o più alto in un elenco di argomenti:*/
+            const arr = [1,6,9,-100,80]
+            let result = 'Max di arr: ' + Math.max.apply(null,arr) + ' Min di arr: ' + Math.min.apply(null,arr); 
+            console.log(result);
+            /*Math.random() restituisce un numero casuale compreso tra 0 (incluso) e 1 (escluso):*/
+            console.log('Metodo random(): '  + Math.random());
+            /*Math.log(x) restituisce il logaritmo naturale di x.
+              Il logaritmo naturale restituisce il tempo necessario per 
+              raggiungere un certo livello di crescita:*/
+            console.log('Metodo log() logaritmo naturale: '  + Math.log(1));
+            console.log('Metodo log() logaritmo naturale: '  + Math.log(2));
+            console.log('Metodo log() logaritmo naturale: '  + Math.log(3));
+            /*Math.E e Math.log() sono gemelli. Quante volte dobbiamo moltiplicare Math.E 
+              per ottenere 10?*/
+            let float = Math.log(10);
+            result = Math.pow(Math.E,float);
+            console.log(result);//result 10
+            /*Math.log2(x) restituisce il logaritmo in base 2 di x.*/
+            console.log('Metodo log2() logaritmo in base 2: ' + Math.log2(8));
+            /*Math.log10(x) restituisce il logaritmo in base 10 di x.*/
+            console.log('Metodo log10() logaritmo in base 10: ' + Math.log10(1000));
+            
+
+        }
+    </script>
+</body>
+</html>
