@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strutture condizionali</title>
+    <script>
+        function eta()
+        {
+           const eta = prompt('Inserisci per favore la tua età: ');
+           let anni = parseInt(eta);
+           let text;
+           if(anni < 18)
+              text = `Hai ${anni} anni, nello stato Italiano non puoi guidare`;
+           if(anni >= 18 && anni < 80)
+              text = `Hai ${anni} anni, nello stato Italiano puoi guidare`;
+            else
+              text = `Hai ${anni} anni, nello stato Italiano non puoi guidare`;  
+            alert(text); 
+            switch (new Date().getDay()) {
+                case 6:
+                  text = "Today is Saturday";
+                  break;
+                case 0:
+                  text = "Today is Sunday";
+                  break;
+                default:
+                  text = "Looking forward to the Weekend";
+              }
+              alert(text); 
+        }
+    </script>
+</head>
+<body onload="eta()">
+    
+</body>
+</html>
