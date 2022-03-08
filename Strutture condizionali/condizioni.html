@@ -27,6 +27,10 @@
                   text = "Looking forward to the Weekend";
               }
               alert(text); 
+              /*USANDO L'OPERATORE TERNARIO*/
+              anni >= 18 && anni < 80 ? text=`Hai ${anni} anni, nello stato Italiano puoi guidare`:
+                                        text=`Hai ${anni} anni, nello stato Italiano non puoi guidare`; 
+              console.log('Operatore ternario: ' + text);
         }
     </script>
 </head>
