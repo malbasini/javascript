@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop</title>
+    <script>
+        function loopFor()
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+            let text = "";
+            for (let i = 0; i < cars.length; i++) {
+                text += cars[i] + "<br>";
+            }
+            document.getElementById("demo").innerHTML = text;
+        }
+        //Statemet 1 con più istruzioni
+        function loopForVariante1()
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford"];
+            let i, len, text;
+            for (i = 0, len = cars.length, text = ""; i < len; i++) {
+                text += cars[i] + "<br>";
+            }
+            document.getElementById("demo").innerHTML = text;
+        }
+        //Statement 1 assente
+        function loopForVariante2()
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford"];
+            let i = 2;
+            let len = cars.length;
+            let text = "";
+            for (; i < len; i++) {
+                text += cars[i] + "<br>";
+            }
+            document.getElementById("demo").innerHTML = text;
+            }
+    </script>
+</head>
+<body>
+    <h2>JavaScript ciclo For</h2>
+    <p id="demo"></p>
+    <button onclick="loopFor()">Ciclo For</button>
+    <br>
+    <br>
+    <button onclick="loopForVariante1()">For Variante 1</button>
+    <br>
+    <br>
+    <button onclick="loopForVariante2()">For Variante 2</button>
+</body>
+</html>

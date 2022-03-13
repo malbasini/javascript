@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ciclo For in</title>
+    <script>
+        function forIn()
+        {
+            //APPLICATO AD UN OGGETTO PERSON
+            const person = {fname:"Mario", lname:"Rossi", age:25};
+            let text = "";
+            for (let x in person) {
+              text += person[x] + ' ';
+            }
+            console.log(text);
+            //APPLICATO AD UN ARRAY
+            const numbers = [45, 4, 9, 16, 25];
+
+            let txt = "";
+            for (let x in numbers) {
+                txt += numbers[x] + ' '; 
+            }
+            console.log(txt);
+        }
+    </script>
+</head>
+<body onload="forIn()">
+    
+</body>
+</html>

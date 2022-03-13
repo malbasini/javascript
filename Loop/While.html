@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ciclo While</title>
+    <script>
+        function cicloWhile()
+        {
+            let text = "";
+            let i = 0;
+            while (i < 10) {
+                text += "<br>The number is " + i;
+                i++;
+            }
+            document.getElementById("demo").innerHTML = text;
+
+        }
+        function while1()
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford"];
+            let i = 0;
+            let text = "";
+            while (cars[i]) {
+                text += cars[i] + "<br>";
+                i++;
+            }
+            document.getElementById("demo").innerHTML = text;
+        }
+        
+    </script>
+</head>
+<body onload="cicloWhile()">
+    <h2>JavaScript While Loop</h2>
+    <p id="demo"></p>
+    <br>
+    <br>
+    <br>
+    <button onclick="while1()">Try it</button>
+</body>
+</html>
