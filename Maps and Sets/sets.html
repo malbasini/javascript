@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Sets</title>
+    <script>
+        function sets()
+        {
+           // create a array
+           const arr = [1,2,3,4,5];
+           // Create a Set
+           const numbers = new Set(arr);
+           // Add Values to the Set
+           numbers.add(6);
+           numbers.add(6);
+           console.log('Size of numbers is: ' + numbers.size);//Expected 6
+           let text = '';
+           numbers.forEach(function(value){
+               text += value + ' ';
+           })
+           console.log(text);
+
+           // List all Elements
+            text = "";
+            for (const x of numbers.values()) {
+                text += x + ' ';
+            }
+            console.log(text);
+            numbers.clear();
+
+        }
+    </script>
+</head>
+<body onload="sets()">
+    
+</body>
+</html>

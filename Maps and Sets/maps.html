@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps</title>
+    <script>
+        function maps()
+        {
+             // Create a Map
+            const fruits = new Map([
+                ["apples", 500],
+                ["bananas", 300],
+                ["oranges", 200],
+                ["lemons", 400]
+            ]);
+            // Duplicate entries
+            fruits.set("apples", 500);
+            console.log('The size of fruits is: ' + fruits.size);//Expected 4
+            // Get Method
+            console.log('Get Method: ' + fruits.get("apples"));
+            // Delete Method
+            let bool = fruits.delete('lemons');
+            console.log(bool);
+            bool = fruits.has('lemons');
+            console.log(bool);
+            // List all entries
+            let text = "";
+            fruits.forEach (function(value, key) {
+                text += key + ' = ' + value + '  ';
+            })
+            console.log(text);
+            // List all entries
+            text = "";
+            for (const x of fruits.entries()) {
+                text += x + ' ';
+            }
+            console.log(text);
+        }
+    </script>
+</head>
+<body onload="maps()">
+    
+</body>
+</html>
