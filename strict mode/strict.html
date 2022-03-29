@@ -15,6 +15,7 @@
         //L'eliminazione di una variabile (o oggetto) non è consentita.
         let y=3.14;
         delete y;
+        //"use strict";
         //L'eliminazione di una funzione non è consentita.
         function x1(p1, p2) {};
         delete x1;                // This will cause an error 
@@ -24,6 +25,7 @@
         let x3 = 010;             // This will cause an error
         //I caratteri di escape ottali non sono consentiti:
         let x4 = "\010";            // This will cause an error
+        //"use strict";
         //La scrittura su una proprietà di sola lettura non è consentita:
         const obj = {};
         Object.defineProperty(obj, "x", {value:0, writable:false});
@@ -31,8 +33,6 @@
         //Non è consentito scrivere su una proprietà get-only:
         const obj1 = {get x() {return 0} };
         obj1.x = 3.14;            // This will cause an error
-        //La parola eval non può essere utilizzata come variabile:
-        let eval = 3.14;         // This will cause an error
         //La parola arguments non può essere utilizzata come variabile:
         let arguments = 3.14;    // This will cause an error
         //L'istruzione with non è consentita:
@@ -46,7 +46,7 @@
         in modalità rigorosa restituiranno undefined e le funzioni in 
         modalità normale restituiranno l'oggetto globale (window):*/
         function myFunction() {
-            alert(this); // will alert "undefined"
+            alert(this); // will alert "window"
           }
           myFunction();
 
