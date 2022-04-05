@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*--Alcune soluzioni comuni per visualizzare gli oggetti JavaScript sono:
+        Visualizzazione delle proprietà dell'oggetto per nome
+        Visualizzazione delle proprietà dell'oggetto in un ciclo
+        Visualizzazione dell'oggetto utilizzando Object.values()
+        Visualizzazione dell'oggetto utilizzando JSON.stringify()*/
+
+        const person = {
+            name: "John",
+            age: 30,
+            city: "New York"
+          };
+          console.log(person.name + "," + person.age + "," + person.city);
+          /*--Le proprietà di un oggetto possono essere raccolte in un ciclo:*/
+          let txt = "";
+          for (let x in person) {
+            txt += person[x] + " ";
+          };
+          console.log(txt);
+          //display in un array
+          const myArray = Object.values(person);
+          console.log(myArray);
+          /*--Qualsiasi oggetto JavaScript può essere stringato (convertito in una stringa) 
+              con la funzione JavaScript JSON.stringify():*/
+          let myString = JSON.stringify(person);
+          console.log(myString);
+          //JSON.stringify converte le date in stringhe:
+          const person2 = {
+            name: "John",
+            today: new Date()
+          };
+          let myString2 = JSON.stringify(person2);
+          console.log(myString2);
+          //JSON.stringify non stringerà le funzioni:
+          const person3 = {
+            name: "John",
+            age: function () {return 30;}
+          };
+          let myString3 = JSON.stringify(person3);
+          console.log(myString3);
+          //Questo può essere "risolto" se si convertono le funzioni in stringhe prima di stringify.
+          person3.age = person3.age.toString();
+          let myString4 = JSON.stringify(person3);
+          console.log(myString4);
+          //È anche possibile fare lo stringify in array JavaScript:
+          const arr = ["John", "Peter", "Sally", "Jane"];
+          let myString5 = JSON.stringify(arr);
+          console.log(myString5);
+
+    </script>
+</body>
+</html>
