@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>GETTER AND SETTER</title>
+</head>
+<body>
+    <script>    
+        /*--Il metodo Object.defineProperty() può essere utilizzato 
+            anche per aggiungere Getter e Setter:*/
+            
+        // Define object
+        const obj = {counter : 0};
+
+        // Define setters
+        Object.defineProperty(obj, "reset", {
+        get : function () {this.counter = 0;}
+        });
+        Object.defineProperty(obj, "increment", {
+        get : function () {this.counter++;}
+        });
+        Object.defineProperty(obj, "decrement", {
+        get : function () {this.counter--;}
+        });
+        Object.defineProperty(obj, "add", {
+        set : function (value) {this.counter += value;}
+        });
+        Object.defineProperty(obj, "subtract", {
+        set : function (value) {this.counter -= value;}
+        });
+
+        // Play with the counter:
+        obj.reset;
+        obj.add = 15;
+        obj.subtract = 10;
+        obj.increment;
+        obj.decrement;
+        console.log(obj.counter);
+    </script>
+</body>
+</html>
