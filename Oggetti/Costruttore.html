@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Costruttore</title>
+</head>
+<body>
+    <script>
+        function Person(firstName, lastName, age, eyeColor) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.eyeColor = eyeColor;
+            //ADD METHOD TO CONSTRUCTOR
+            this.changeName = function (first,last) {
+                this.firstName = first;
+                this.lastName = last;
+              };
+            //ADD PROPERTY TO CONSTRUCTOR
+            this.nationality = 'English';
+          }
+        const person1 = new Person('Mario','Rossi',40,'blue');
+        const person2 = new Person('Luigi','Verdi',50,'green');
+        person1.changeName('Mario','Bianchi');
+        console.log(person1.firstName + ' ' + person1.lastName);
+        console.log(person2.firstName + ' ' + person2.lastName);
+    </script>
+</body>
+</html>
