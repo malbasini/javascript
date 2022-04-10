@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+        /*Ricordate, nuovi oggetti possono essere creati con un costruttore, come new F().
+         Se F.prototype è un oggetto, l’operatore new si prenderà cura di 
+         impostare [[Prototype]] per il nuovo oggetto. Da notare che qui F.prototype , 
+         sta per una comune proprietà chiamata "prototype" in F. Sembra molto simile 
+         al termine “prototype”, ma in questo caso intendiamo realmente riferirci ad 
+         una proprietà con questo nome.
+         Vediamo qui un esempio:*/
+         let animal = {
+            eats: true
+          };
+          function Rabbit1(name) {
+            this.name = name;
+          }
+          Rabbit1.prototype = animal;
+          let rabbit = new Rabbit1("White Rabbit"); //  rabbit.__proto__ == animal
+          console.log( rabbit.eats ); // true
+          /*Impostare Rabbit.prototype = animal fa letteralmente quanto segue: 
+          "Quando un nuovo new Rabbit viene creato, assegna il suo [[Prototype]] 
+          ad animal".*/
+          /*Ogni funzione possiede la proprietà "prototype" anche se non gliela forniamo 
+          direttamente.Il "prototype" di default è un oggetto con un’unica proprietà, 
+          il constructor che punta alla funzione stessa.
+          Vediamo un esempio:*/
+          function Rabbit() {}
+          // di default:
+          // Rabbit.prototype = { constructor: Rabbit }
+          console.log( Rabbit.prototype.constructor == Rabbit ); // true
+          /*Naturalmente, se non facciamo nulla, il constructor sarà disponibile a 
+          tutti i rabbit attraverso [[Prototype]]:*/
+          // di default:
+          // Rabbit.prototype = { constructor: Rabbit }
+          let rabbit1 = new Rabbit(); // eredita da {constructor: Rabbit}
+          console.log(rabbit1.constructor == Rabbit); // true (dal prototype)
+          /*Possiamo utilizzare il constructor per creare un nuovo oggetto utilizzando 
+          lo stesso costruttore dell’oggetto già esistente.
+          Come nell’esempio:*/
+          function Rabbit3(name) {
+            this.name = name;
+            console.log(name);
+          }
+          let rabbit2 = new Rabbit3("White Rabbit");
+          let rabbit3 = new rabbit2.constructor("Black Rabbit");
+          /*Questo torna molto utile quando abbiamo un oggetto, ma non sappiamo quale 
+          costruttore è stato utilizzato (ad esempio se arriva da una libreria di terze parti), 
+          e abbiamo bisogno di crearne un altro dello stesso tipo.
+          Ma probabilmente la cosa più importante del "constructor" è che…
+          …JavaScript stesso non garantisce il giusto valore del "constructor".
+          E’ vero, esiste di default nel "prototype" delle funzioni, ma questo è tutto. 
+          Ciò che accade dopo – è solo nostra responsabilità.
+          In particolare, se rimpiazziamo completamente il prototype di default, 
+          allora non ci sarà alcun "constructor".
+          Ad esempio:*/
+          function Rabbit4() {}
+             Rabbit4.prototype = {
+             jumps: true
+           };
+          let rabbit4 = new Rabbit4();
+          console.log(rabbit4.constructor === Rabbit4); // false
+          /*Quindi, per mantenere il "constructor" corretto, possiamo decidere di 
+          aggiungere/rimuovere proprietà al "prototype" di default, invece che 
+          sovrascriverlo completamente:*/
+          function Rabbit5() {}
+
+          // Non sovrascriviamo Rabbit5.prototype completamente
+          // aggiungiamo semplicemente una proprietà
+          Rabbit5.prototype.jumps = true
+          // il Rabbit5.prototype.constructor viene cosi preservato
+          //O, in alternativa, possiamo ricreare il constructor manualmente:
+          function Rabbit6() {}
+          Rabbit6.prototype = {
+            jumps: true,
+            constructor: Rabbit6
+          };
+    </script>
+</body>
+</html>

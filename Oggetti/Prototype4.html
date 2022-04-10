@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Metodi di prototype, objects senza __proto__
+          Nel primo capitolo di questa sezione, abbiamo menzionato il fatto che esistono 
+          metodi piu moderni per impostare il prototype. La proprietà __proto__ viene 
+          considerata datata, e in un certo senso anche deprecata 
+          (negli standard JavaScript per i browser).
+          Alcuni dei metodi più moderni sono:
+          Object.create(proto, [descriptors]) – crea un oggetto vuoto, 
+          impostando il proto come [[Prototype]] e dei descrittori di proprietà opzionali.
+          Object.getPrototypeOf(obj) – ritorna il [[Prototype]] di obj.
+          Object.setPrototypeOf(obj, proto) – imposta il [[Prototype]] di obj a proto.
+          Questi metodi dovrebbero sempre essere preferiti a __proto__.
+          Ad esempio:*/
+          let animal = {
+            eats: true
+          };
+          
+          // creiamo un nuovo oggetto con animal come prototype
+          let rabbit = Object.create(animal);
+          
+          console.log(rabbit.eats); // true
+          
+          console.log(Object.getPrototypeOf(rabbit) === animal); // true
+          
+          Object.setPrototypeOf(rabbit, {}); // cambia il prototype di rabbit a {}
+          /*Object.create supporta un secondo argomento opzionale: il property descriptors 
+          (descrittori di proprietà). Possiamo fornire proprietà aggiuntive al nuovo oggetto, 
+          in questo modo:*/
+          let animal2 = {
+            eats: true
+          };
+          
+          let rabbit2 = Object.create(animal2, {
+            jumps: {
+              value: true
+            }
+          });
+          
+          console.log(rabbit2.jumps); // true
+          /*Possiamo utilizzare Object.create per clonare un oggetto in maniera 
+          più efficace rispetto al copiare le proprietà con un for..in:*/
+          let obj = {};
+          let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+          /*Questa chiamata crea una copia esatta di obj, inculdendo tutte le proprietà: 
+          enumerable e non-enumerable, e i relativi setters/getters – tutto, 
+          impostando anche il giusto [[Prototype]].*/
+
+          /*"Very plain" objects
+           Come sappiamo, gli oggetti possono essere utilizzati come un array associativo 
+           per memorizzare coppie chiave/valore.
+           …Ma se proviamo a memorizzare chiavi fornite dall’utente 
+           (ad esempio, un dizionario con vocaboli forniti dall’utente), 
+           noteremo un piccolo bug: tutte le chiavi funzioneranno senza problemi, 
+           ad eccezione di "__proto__".
+           Vediamo un esempio:*/
+           let key = prompt("What's the key?", "__proto__");
+           obj[key] = "some value";
+           console.log(obj[key]); // [object Object], non "some value"!
+           /*Ora, se il nostro scopo è quello di utilizzare un oggetto come array associativo, e 
+           vogliamo evitare questo tipo di problemi, possiamo farlo in questo modo:*/
+           let obj1 = Object.create(null);
+
+           let key1 = prompt("What's the key?", "__proto__");
+           obj1[key1] = "some value";
+
+           console.log(obj1[key1]); // "some value"
+           /*Quindi, non si ha alcun getter/setter ereditato per __proto__. D’ora in poi 
+           verrà trattata come una comune proprietà; l’esempio visto sopra funzionerà 
+           senza problemi. Questo tipo di oggetti vengono chiamati “very plain” 
+           (“molto semplici”) o “pure dictionary” (“dizionari puri”), poiché sono 
+           molto più semplici dei normali plain object {...}.
+           Il lato negativo di questi oggetti è che mancano di tutti i metodi integrati, 
+           ad esempio toString:*/
+           console.log(obj1); // Error (non esiste toString)
+    </script>
+</body>
+</html>

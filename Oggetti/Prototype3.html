@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+      /*La proprietà "prototype" viene largamente utilizzata da JavaScript stesso. 
+      Tutti i costruttori integrati ne fanno uso.<Come prima cosa andremo ad analizzare 
+      questa proprietà nel dettaglio; in un secondo momento vedremo come utilizzarla per 
+      aggiungere nuove funzionalità agli oggetti integrati.
+      Object.prototype
+      Ipotizziamo di dover mostrare un oggetto vuoto:*/
+      let obj = {};
+      console.log( obj ); // "[object Object]" ?
+      /*Da dove arriva il codice che genera la stringa "[object Object]"? E’ il metodo 
+      integrato toString, ma dove lo possiamo trovare? L’oggetto obj è vuoto!
+      …La notazione obj = {} equivale a obj = new Object(), dove Object è un costruttore 
+      integrato, in cui la proprietà prototype fa riferimento ad un oggetto con toString 
+      e altri metodi.*/
+      /*Quando viene invocato new Object() (o viene creato un literal object {...}), 
+      il suo [[Prototype]] viene impostato a Object.prototype, come abbiamo studiato 
+      nel capitolo precedente: (prototype2.html) Quindi, quando obj.toString() viene 
+      invocato, il metodo viene cercato in Object.prototype.
+      Possiamo verificarlo in questo modo:*/
+      console.log(obj.__proto__ === Object.prototype); // true
+      console.log(obj.toString === obj.__proto__.toString); //true
+      console.log(obj.toString === Object.prototype.toString); //true
+      /*Altri oggetti integrati, come Array, Date, Function ed altri, hanno i propri 
+      metodi in prototypes. Ad esempio, quando creiamo un array [1, 2, 3], il costruttore 
+      di default new Array() viene invocato internamente. 
+      Quindi Array.prototype ne diventa il prototipo e fonisce i suoi metodi. 
+      Questo comportamento rende l’utilizzo della memoria molto efficiente.
+      Come definito nella specifica, tutti i prototype integrati hanno Object.prototype in cima. 
+      Questo è il motivo per cui alcune persone dicono che “tutto deriva dagli oggetti”.*/
+      let arr = [1, 2, 3];
+
+      // eredita da Array.prototype?
+      console.log( arr.__proto__ === Array.prototype ); // true
+
+      // e successivamente da Object.prototype?
+      console.log( arr.__proto__.__proto__ === Object.prototype ); // true
+
+      // e infine null
+      console.log( arr.__proto__.__proto__.__proto__ ); // null
+      console.log(arr); // 1,2,3 <-- il risultato di Array.prototype.toString
+      /*Gli altri ogetti integrati funzionano allo stesso modo. Anche le funzioni – 
+      poiché sono oggetti di un costruttore integrato Function, e i suoi metodi 
+      (call/apply e gli altri) sono presi da Function.prototype. 
+      Anche le funzioni possiedono una loro implementazione di toString.*/
+      function f() {}
+
+      console.log(f.__proto__ == Function.prototype); // true
+      console.log(f.__proto__.__proto__ == Object.prototype); // true, eredità da objects
+      /*La situazione è molto più complessa con strings, numbers e booleans.
+        Come abbiamo già visto, questi non sono oggetti. Ma se proviamo ad accedere 
+        alle loro proprietà, viene creato un oggetto temporaneo utilizzando i 
+        rispettivi costruttori String, Number e Boolean. 
+        Essi forniscono metodi e poi spariscono. Questi oggetti vengono creati di “nascosto” e 
+        in realtà molti motori ottimizzano il loro utilizzo, ma la specifica li 
+        descrive in questo modo. I metodi di questi oggetti sono memorizzati 
+        nella proprietà del loro prototype, e sono disponibili tramite String.prototype, 
+        Number.prototype e Boolean.prototype. I Native prototypes possono essere modificati. 
+        Ad esempio, se aggiungiamo il metodo String.prototype, 
+        questo diventa disponibile a tutte le string:*/
+        String.prototype.show = function() {
+            console.log(this);
+          };
+          
+          "BOOM!".show(); // BOOM!
+        /*Durante lo sviluppo, potremmo avere bisogno di nuovi metodi integrati che ci piacerebbe avere, e potremmo quindi essere tentati di aggiungerli ai native prototype. 
+          Generalmente questa è una pessima idea.*/  
+    </script>
+</body>
+</html>

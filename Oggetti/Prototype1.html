@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+        /*Nella programmazione, spesso vogliamo prendere qualcosa ed estenderla. Ad esempio, 
+        potremmo avere un oggetto user con le sue proprietà e i suoi metodi, e voler definire 
+        gli oggetti admin e guest come sue varianti. Vorremmo però poter riutilizzare ciò 
+        che abbiamo nell’oggetto user, evitando di copiare e reimplementare nuovamente 
+        i suoi metodi, quindi vorremmo semplicemente definire un nuovo oggetto a partire da esso.
+        La prototypal inheritance (ereditarietà dei prototype) è una caratteristica del 
+        linguaggio che aiuta in questo senso.
+        [[Prototype]]
+        In JavaScript, gli oggetti possiedono una speciale proprietà nascosta 
+        [[Prototype]] (come definito nella specifica); questo può valere null oppure 
+        può contenere il riferimento ad un altro oggetto. 
+        Quell’oggetto viene definito “prototype” (prototipo):
+        La proprietà [[Prototype]] è interna e nascosta, ma esistono diversi modi per 
+        poterla impostare. Uno di questi è quello di utilizzare la nomenclatura 
+        speciale __proto__:*/
+        let animal = {
+            eats: true
+        };
+        let rabbit = {
+            jumps: true
+        };
+          
+        rabbit.__proto__ = animal; // (*)
+          
+        // ora in rabbit possiamo trovare entrambe le proprietà
+        console.log( rabbit.eats ); // true (**)
+        console.log( rabbit.jumps ); // true
+        /*In questo caso possiamo dire che "animal è il prototype di rabbit" o, 
+        in alternativa, che "rabbit prototypically inherits (eredità dal prototipo) 
+        da animal" Quindi se animal possiede molte proprietà e metodi utili, questi 
+        saranno automaticamente disponibili in rabbit. 
+        Queste proprietà vengono definite come “ereditate”. Se abbiamo un metodo in animal, 
+        possiamo invocarlo anche in rabbit:*/
+        let animal1 = {
+            eats: true,
+            walk() {
+              console.log("Animal walk");
+            }
+          };
+          
+          let rabbit1 = {
+            jumps: true,
+            __proto__: animal1
+          };
+          // walk viene ereditato dal prototype
+          rabbit1.walk(); // Animal walk
+          //La catena dei prototype può esser anche più lunga:
+          let animal3 = {
+            eats: true,
+            walk() {
+              console.log("Animal walk");
+            }
+          };
+          
+          let rabbit3 = {
+            jumps: true,
+            __proto__: animal3
+          };
+          
+          let longEar = {
+            earLength: 10,
+            __proto__: rabbit3
+          };
+          
+          // walk viene presa dalla catena di prototype
+          longEar.walk(); // Animal walk
+          console.log(longEar.jumps); // true (da rabbit)
+          /*Ora, se provassimo a leggere qualcosa da longEar, e non esistesse, 
+          JavaScript andrebbe a guardare prima in rabbit, e poi in animal.
+          Ci sono solamente due limitazioni:
+          Non possono esserci riferimenti circolari. JavaScript restituirebbe un 
+          errore se provassimo ad assegnare a __proto__ un riferimento circolare.
+          Il valore di __proto__ può essere o un oggetto o null. Gli altri valori vengono ignorati.
+          Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un [[Prototype]]. 
+          Un oggetto non può ereditare da più oggetti.
+          Il prototype viene utilizzato solamente per la lettura delle proprietà. Le operazioni 
+          di scrittura/rimozione utilizzano direttamente l’oggetto.
+          Nell’esempio che vediamo sotto, assegniamo un metodo walk a rabbit, che sarà solo suo:*/
+          let animal4 = {
+            eats: true,
+            walk() {
+              /* questo metodo non verrà utilizzato da rabbit */
+            }
+          };
+          
+          let rabbit4 = {
+            __proto__: animal4
+          };
+          
+          rabbit4.walk = function() {
+            console.log("Rabbit! Bounce-bounce!");
+          };
+          rabbit4.walk(); // Rabbit! Bounce-bounce!
+          /*Le proprietà di accesso sono delle eccezioni, poiché l’assegnazione viene 
+          gestita da un setter. Quindi scrivere su una proprietà di questo tipo equivale 
+          ad invocare una funzione. Per questo motivo, admin.fullName funziona 
+          correttamente nel codice sotto:*/
+          let user = {
+            name: "John",
+            surname: "Smith",
+          
+            set fullName(value) {
+              [this.name, this.surname] = value.split(" ");
+            },
+          
+            get fullName() {
+              return `${this.name} ${this.surname}`;
+            }
+          };
+          
+          let admin = {
+            __proto__: user,
+            isAdmin: true
+          };
+          
+          console.log(admin.fullName); // John Smith (*)
+          
+          // il setter viene invocato!
+          admin.fullName = "Alice Cooper"; // (**)
+          
+          console.log(admin.fullName); // Alice Cooper, lo stato di admin è stato modificato
+          console.log(user.fullName); // John Smith, lo stato di user è protetto
+          /*Nell’esempio, alla linea (*) la proprietà admin.fullName ha un getter 
+          nel prototype user, quindi viene invocato. E alla linea (**) 
+          la proprietà ha un setter nel prototype, che viene quindi invocato.
+          IL VALORE DI THIS************************************************
+          Dall’esempio sopra potrebbe sorgere una domanda interessante: qual è il valore 
+          di this all’interno set fullName(value)? Dove vengono scritte le proprietà 
+          this.name e this.surname: in user o admin?
+          La risposta è semplice: this non viene influenzato dai prototype.
+          Non ha importanza dove viene trovato il metodo: nell’oggetto o in un suo prototype. 
+          Quando invochiamo un metodo, this fa sempre riferimento all’oggetto che 
+          precede il punto. Quindi, l’invocazione del setter admin.fullName= utilizza 
+          admin come this, non user. Questo è molto importante, poiché potremmo avere un 
+          oggetto molto grande con molti metodi, e avere diversi oggetti che ereditano da esso. 
+          Quando gli oggetti che ereditano eseguono un metodo ereditato, andranno a 
+          modificare solamente il loro stato, non quello dell’oggetto principale da cui ereditano.
+          Ad esempio, qui animal rappresenta un “archivio di metodi”, che rabbit utilizza.
+          La chiamata rabbit.sleep() imposta this.isSleeping nell’oggetto rabbit:*/
+          // animal possiede dei metodi
+            let animal5 = {
+                walk() {
+                if (!this.isSleeping) {
+                    console.log(`I walk`);
+                }
+                },
+                sleep() {
+                this.isSleeping = true;
+                }
+            };
+            
+            let rabbit5 = {
+                name: "White Rabbit",
+                __proto__: animal5
+            };
+            
+            // modifica rabbit.isSleeping
+            rabbit5.sleep();
+            
+            console.log(rabbit5.isSleeping); // true
+            console.log(animal5.isSleeping); // undefined (non esiste questa proprietà nel prototype)
+            /*Se avessimo altri oggetti, come bird, snake, etc., che ereditano da animal, 
+            avrebbero a loro volta accesso ai metodi di animal. 
+            In ogni caso, this all’interno della chiamata farebbe riferimento 
+            all’oggetto corrispondente, che viene valutato al momento dell’invocazione 
+            (appena prima del punto), e non ad animal. Quindi quando scriviamo dati utilizzando this, 
+            questi verranno memorizzati nell’oggetto corrispondente. risultato i metodi 
+            sono condivisi, mentre lo stato degli oggetti non lo è.*/
+
+            //Il ciclo for..in itera anche le proprietà ereditate.
+            // Object.keys ritorna solamente le chiavi
+             console.log(Object.keys(rabbit)); // jumps
+
+            // il ciclo for..in itera sia le proprietà di rabbit, che quelle ereditate da animal
+            for(let prop in rabbit) console.log(prop); // jumps, then eats
+            for(let prop in rabbit) {
+                let isOwn = rabbit.hasOwnProperty(prop);
+              
+                if (isOwn) {
+                  console.log(`Our: ${prop}`); // Our: jumps
+                } else {
+                  console.log(`Inherited: ${prop}`); // Inherited: eats
+                }
+              }
+              /*Da notare, c’è una cosa divertente. Da dove arriva il metodo 
+              rabbit.hasOwnProperty? Noi non lo abbiamo mai definito. Osservando 
+              la catena ci accorgiamo che il metodo viene fornito da 
+              Object.prototype.hasOwnProperty. In altre parole, è ereditato.
+              Ma perché hasOwnProperty non appare nel ciclo for..in come eats e jumps, 
+              se for..in elenca tutte le proprietà ereditate? La risposta è semplice: 
+              la proprietà è non enumerable. Come tutte le altre proprietà di Object.prototype, 
+              possiedono la flag enumerable:false. Quindi for..in elenca solamente 
+              le proprietà enumerable. Questo è il motivo per cui le proprietà 
+              di Object.prototype non vengono elencate.*/
+    </script>
+</body>
+</html>
