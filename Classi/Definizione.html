@@ -45,22 +45,20 @@
             abi = '';
             cab = '';
             Utente;
-
-            constructor(id, denominazione, abi, cab, Utente) {
+            constructor(id, denominazione, abi, cab) {
 
                 this.id = id;
                 this.denominazione = denominazione;
                 this.abi = abi;
                 this.cab = cab;
-                this.Utente = Utente
-
             }
             Denominazione()
             {
                 alert(`Id Banca ${this.id} ,denominazione: ${this.denominazione}`);
             }
-            Preleva(importo)
+            Preleva(importo,utente)
             {
+                this.Utente = utente;
                 let saldo = this.Utente.GetSaldo();
                 if (importo > saldo) {
                     alert(`Operazione di prelievo non ammessa, importo richiesto ${importo}`);
@@ -75,8 +73,9 @@
                 return;
 
             }
-            Accredito(importo)
+            Accredito(importo,utente)
             {
+                this.Utente = utente;
                 if (importo < 0) {
                     alert(`Importo accreditato non valido: ${importo}`);
                     this.Utente.Denominazione();
@@ -86,12 +85,16 @@
                 return;
             }
         }
-        let utente = new Utente("1234560", "Mario", "Rossi", "4356789");
-        utente.SetSaldo(13000);
-        console.log(utente.SaldoCorrente());
-        let b = new Banca("1234567890", "UBI Banca", "14400", "66000", utente);
-        b.Preleva(3000);
-        console.log(utente.SaldoCorrente());
+        let utente1 = new Utente("1234560", "Mario", "Rossi", "4356789");
+        utente1.SetSaldo(13000);
+        console.log(utente1.SaldoCorrente());
+        let b = new Banca("1234567890", "UBI Banca", "14400", "66000");
+        b.Preleva(3000,utente1);
+        console.log(utente1.SaldoCorrente());
+        let utente2 = new Utente("1234560", "Luigi", "Bianchi", "4356789");
+        utente2.SetSaldo(12000);
+        b.Accredito(3000,utente2);
+        console.log(utente2.SaldoCorrente());
     </script>
 </body>
 </html>
