@@ -26,7 +26,11 @@
             }
 
             SaldoCorrente(){
+<<<<<<< HEAD
                  console.log(`Utente ${this.nome + ' ' + this.cognome + ' saldo: ' + this.GetSaldo()}`);
+=======
+                 alert(`Utente ${this.nome + ' ' + this.cognome + ' saldo: ' + this.GetSaldo()}`);
+>>>>>>> d987d5419cce9a06020516786ddbd28e66b14b9b
              }
              GetSaldo(){
                  return this.saldo;
@@ -87,6 +91,7 @@
         }
         let utente1 = new Utente("1234560", "Mario", "Rossi", "4356789");
         utente1.SetSaldo(13000);
+<<<<<<< HEAD
         utente1.SaldoCorrente();
         let b = new Banca("1234567890", "UBI Banca", "14400", "66000");
         b.Preleva(3000,utente1);
@@ -98,3 +103,16 @@
     </script>
 </body>
 </html>
+=======
+        console.log(utente1.SaldoCorrente());
+        let b = new Banca("1234567890", "UBI Banca", "14400", "66000");
+        b.Preleva(3000,utente1);
+        console.log(utente1.SaldoCorrente());
+        let utente2 = new Utente("1234560", "Luigi", "Bianchi", "4356789");
+        utente2.SetSaldo(12000);
+        b.Accredito(3000,utente2);
+        console.log(utente2.SaldoCorrente());
+    </script>
+</body>
+</html>
+>>>>>>> d987d5419cce9a06020516786ddbd28e66b14b9b
