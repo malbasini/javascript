@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>METODI STATICI</title>
+</head>
+<body>
+    <script>
+        class Utente{
+
+            static iban;
+            constructor(id,nome,cognome,numeroConto,eta){
+                this.id=id;
+                this.nome=nome;
+                this.numeroConto=numeroConto;
+                this.cognome=cognome;
+                this.eta=eta;
+            }
+
+            Denominazione(){
+                console.log(`Utente, ${this.nome + ' ' + this.cognome}`);
+            }
+            //METODO STATICO
+            static SaldoCorrente(x,y){
+                 return `Utente ${x.nome + ' ' + x.cognome +  ' età ' + x.eta +  ' iban ' + y +' saldo: ' + x.GetSaldo()}`;
+             }
+             GetSaldo(){
+                 return this.saldo;
+             }
+             SetSaldo(importo){
+                 if(importo<0){
+                    alert(`Saldo negativo, utente ${this.nome + ' ' + this.cognome + ' saldo: ' + Utente.GetSaldo()}`);
+                    return;
+                 }
+                 this.saldo=importo;
+             }
+        }
+
+        class Studente extends Utente{
+
+            constructor(id,nome,cognome,numeroConto,eta,facolta){
+                super(id,nome,cognome,numeroConto,eta);
+                this.facolta=facolta;
+            }
+
+            Denominazione(){
+                console.log(`Studente, ${this.nome + ' ' + this.cognome + ' anni ' + this.eta + ' facolta ' + this.facolta}`);
+            }
+        }
+        class Banca {
+            constructor(id, denominazione, abi, cab) {
+
+                this.id = id;
+                this.denominazione = denominazione;
+                this.abi = abi;
+                this.cab = cab;
+            }
+            Denominazione()
+            {
+                alert(`Id Banca ${this.id} ,denominazione: ${this.denominazione}`);
+            }
+            Preleva(importo,utente)
+            {
+                this.Utente = utente;
+                let saldo = this.Utente.GetSaldo();
+                if (importo > saldo) {
+                    alert(`Operazione di prelievo non ammessa, importo richiesto ${importo}`);
+                    alert(this.Utente.Denominazione());
+                    return;
+                }
+                if (importo < 0) {
+                    alert(`Importo prelevato non valido: ${importo}`);
+                    return;
+                }
+                this.Utente.SetSaldo(this.Utente.GetSaldo() - importo);
+                return;
+
+            }
+            Accredito(importo,utente)
+            {
+                this.Utente = utente;
+                if (importo < 0) {
+                    alert(`Importo accreditato non valido: ${importo}`);
+                    this.Utente.Denominazione();
+                    return;
+                }
+                this.Utente.SetSaldo(this.Utente.GetSaldo() + importo);
+                return;
+            }
+        }
+        let banca = new Banca("1234567890", "UBI Banca", "14400", "66000");
+        let studente = new Studente("1234560", "Luigi", "Bianchi", "4356789",25,"Giurisprudenza");
+        studente.SetSaldo(5000);
+        Studente.iban='000000000000001234567834567';
+        let iban = Studente.iban;
+        banca.Preleva(3000,studente);
+        studente.Denominazione();
+        console.log(Studente.SaldoCorrente(studente,iban));
+        let utente = new Utente("123","Mario","Rossi","345654321",50);
+        Utente.iban="000000000000001234567834567";
+        iban = Utente.iban;
+        utente.SetSaldo(20000);
+        banca.Preleva(3000,utente);
+        console.log(Utente.SaldoCorrente(utente,iban));
+    </script>
+</body>
+</html>
