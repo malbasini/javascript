@@ -22,7 +22,10 @@
             }
             //METODO STATICO
             static SaldoCorrente(x,y){
-                 return `Utente ${x.nome + ' ' + x.cognome +  ' età ' + x.eta +  ' iban ' + y +' saldo: ' + x.GetSaldo()}`;
+                 if(x instanceof Studente)
+                    return `Studente ${x.nome + ' ' + x.cognome +  ' età ' + x.eta +  ' iban ' + y +' saldo: ' + x.GetSaldo()}`;
+                 else
+                    return `Utente ${x.nome + ' ' + x.cognome +  ' età ' + x.eta +  ' iban ' + y +' saldo: ' + x.GetSaldo()}`;
              }
              GetSaldo(){
                  return this.saldo;
