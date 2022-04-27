@@ -18,7 +18,7 @@
             }
 
             Denominazione(){
-                console.log(`Utente, ${this.nome + ' ' + this.cognome}`);
+                console.log(`${this.nome + ' ' + this.cognome}`);
             }
             //METODO STATICO
             static SaldoCorrente(x,y){
@@ -32,7 +32,7 @@
              }
              SetSaldo(importo){
                  if(importo<0){
-                    alert(`Saldo negativo, utente ${this.nome + ' ' + this.cognome + ' saldo: ' + Utente.GetSaldo()}`);
+                    alert(`Saldo negativo, ${this.nome + ' ' + this.cognome + ' saldo: ' + Utente.GetSaldo()}`);
                     return;
                  }
                  this.saldo=importo;
