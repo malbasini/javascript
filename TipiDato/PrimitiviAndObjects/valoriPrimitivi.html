@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //VALORI PRIMITIVI
+    const num = 10;
+    console.log(num + " :Tipo = "+typeof(num));
+    const nome = "Marco;"
+    console.log(nome + " :Tipo = "+typeof(nome));
+    let isDeveloper = true;
+    console.log("Tipo = "+typeof isDeveloper );
+    let nullo = null;
+    console.log("Tipo = "+typeof nullo);//Type Object bug JS
+    let und = undefined;
+    console.log("Tipo = "+typeof und);
+    //Definizione di oggetto. Se vogliamo sapere il valore di
+    //una proprietà utilizziamo la notazione punto (dot notations)
+    //ossia nomeoggetto.nomeproprietà.
+    let casa = {
+         piani:3,
+         descrizione:'Casa con giardino'
+    }
+    console.log("Tipo = "+typeof casa);
+    console.log(casa.descrizione);
+    /*--Per quanto riguarda la definizione di queste variabili,
+    non dobbiamo assegnare un tipo. Sarà javascript a stabilire
+    il corretto tipo di dato. con typeof vediamo il tipo di
+    dato associato a una variabile.*/
+    </script>
+</body>
+</html>
