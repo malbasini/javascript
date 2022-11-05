@@ -35,6 +35,40 @@
     </script>
 </head>
 <body onload="eta()">
-    
+    <script>
+        let azione;
+        let votoEsame = 18;
+        if(votoEsame < 18){
+            azione = "Restare a casa a studiare";
+        }
+        else if( votoEsame < 23){
+           azione = "Passeggiata poi torno a studiare";
+        }
+        else{
+           azione = "Fare un weekeend";
+        }
+        console.log(azione);
+        /*Quando ci sono molte condizioni, quindi parecchi else if
+        la leggebilità del nostro codice non è buona. A tal proposito
+        è meglio utlizzare l'istruzione switch. Facciamo un esempio.
+        il break serve per uscire dallo switch, perche se abbiamo
+        ottenuto corrispondenza è inutile continuare al suo interno
+        .default è un pò come l'else generale. In caso
+        di voto 4 oppure 5 la valutazione sarà molto buona.*/
+        let votoRicevuto = 2;
+        let valutazione;
+        switch(votoRicevuto){
+          case 1:valutazione="Pessima";break;
+          case 2:valutazione="Scarsa";break;
+          case 3:valutazione="Media";break;
+          default:valutazione="Molto buona"; 
+        }
+        console.log(valutazione);
+        /*--Operatore ternario. Si chiama così perchè viene applicato a 
+        tre espressioni e migliora la leggibilità del codice.*/
+        var esameSuperato, voto = 22;
+        esameSuperato = (voto >=18 ? true : false);
+        console.log(esameSuperato);
+    </script>
 </body>
 </html>
