@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BigInt</title>
+</head>
+<body>
+    <script>
+        //BigInt
+        let x = 10n;
+        console.log(typeof x);
+        let maxInt = Number.MAX_SAFE_INTEGER;
+        console.log('MaxInt: '+maxInt);
+        maxInt+=6;
+        console.log('MaxInt + 6: '+maxInt);// 9007199254740994 ERRATO
+        let big = 9007199254740991n +6n; //9007199254740991 MAX_SAFE_INTEGER
+        console.log('BigInt: '+big)
+        let big2 = BigInt(Number.MAX_SAFE_INTEGER);
+        big2+=8n;
+        console.log('MAX_SAFE_INTEGER + 8: '+big2);
+        /*Possiamo fare tutte le operazioni aritmetiche.
+        Quando parliamo di BigInt parliamo di valori interi quindi se
+        ad esempio facciamo 10n/6n la parte decimale viene troncata.*/
+        let z = 10n / 6n;
+        console.log(z);
+    </script>
+</body>
+</html>
