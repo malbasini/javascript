@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Numeri in Javascript</title>
+    <script>
+        //OPERAZIONI CON I NUMERI
+        function operazioni()
+        {
+            let ris = 10 + 3 * 2;
+            console.log(ris);
+            /*--Se vogliamo cambiare la precedenza tra gli operatori
+            mettiamo le parentesi.*/
+            ris = (10 + 3) * 2;
+            console.log(ris);
+            /*--L'operatore modulo % restituisce il resto della
+            divisione tra due numeri.*/
+            let mod = 10 % 3;
+            console.log(mod);
+            /*--Elevamento a potenza**   */
+            let potenza = 2 ** 3;
+            console.log(potenza);
+            /*Post incremento */
+            let num = 0;
+            console.log(num++);//0 il post incremento prima restituisce il numero
+            //poi lo incrementa
+            /*--Pre incremento*/
+            let num2 = 0;
+            console.log(++num2);//1 Prima viene incrementato il valore poi restituito.
+            /*--Stesso discorso vale per il post decremento e pre decremento*/
+            /*--Un numero può anche essere definito istanziando un oggetto Number.*/
+            let num3 = new Number(110);
+            console.log(Number);/*Restituisce proprietà costanti e metodi (funzioni)*/
+            let numeroGrande = Number.MAX_SAFE_INTEGER + 10;
+            //MAX_SAFE_INTEGER numero più grande rappresentabile sicuro.
+            console.log(Number.isSafeInteger(numeroGrande))//False
+            console.log(Math);
+            console.log(Math.random()*1000);//Numero compreso tra 0 e 1000
+            let casuale = Math.random() * 1000;
+            casuale = Math.trunc(casuale);
+            console.log(casuale);
+
+        }
+    </script>
+</head>
+<body onload="operazioni();">
+   <script>
+     function one()
+     {
+        let a = 10;
+        let b = 3.4;
+        console.log(typeof a);
+        console.log(typeof b);
+        /*Il tipo è sempre number sia per i numeri interi sia per quelli floating point;*/
+     }
+     one();
+   </script> 
+</body>
+</html>
