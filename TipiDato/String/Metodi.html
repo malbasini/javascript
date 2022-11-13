@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Metodi</title>
+</head>
+<body>
+    <script>
+        let str = new String('Ciao');
+        console.log(typeof str);//object
+        console.log(String);
+        /*--Quando utilizziamo new viene creato un oggetto
+        e sappiamo che anche un oggetto da noi creato può contenere
+        metodi. Metodi che possiamo invocare. Ad esempio:*/
+        let obj = {
+            fn : function saluta(){
+                return 'Ciao';
+            }
+        };
+        console.log(obj.fn());
+        /*--Se abbiamo bisogno di conoscere la lunghezza di una
+        stringa scriviamo:*/
+        let a = 'Ciao';
+        console.log(a.length);
+        /*--Length non è invocato su un oggetto ma su un tipo
+        primitivo.*/
+        //Sottostringhe
+        let b = 'Limitami a dieci caratteri';
+        let c = b.substr(0,10);
+        console.log(c);
+        /*--Il tipo primitivo viene convertito internamente in oggetto, per
+        questo motivo possiamo invocare proprietà e metodi sui tipi
+        primitivi.*/
+        obj = {};
+        console.log(obj.toString());
+    </script>
+</body>
+</html>

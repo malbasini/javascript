@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Template Literal</title>
+</head>
+<body>
+    <script>
+        let a = `prima riga
+                 Seconda Riga
+                 terza riga`
+        let nome = 'Simona';
+        //Interpolazione di stringhe
+        console.log(`ciao da ${nome}`);
+        /*All'interno delle graffe possiamo inserire tutte le espressioni
+        che vogliamo.*/
+        const c = 5, b = 10;
+        console.log(`${c} + ${d} è uguale a ${c + d * 10}`);
+        //Possiamo anche invocare una funzione
+       function descrivimi(nome, cognome){
+            return `Mi chiamo ${nome} ${cognome}`;
+       }
+       console.log(`${descrivimi("Simona","Rossi")}`);
+       console.log(total);
+        /*--HTML Templates*/
+       let header = "Templates Literals";
+       let tags = ["template literals", "javascript", "es6"];
+       let html = `<h2>${header}</h2><ul>`;
+       for (const x of tags) {
+            html += `<li>${x}</li>`;
+       }
+       html += `</ul>`;
+       console.log(html);
+    </script>
+</body>
+</html>

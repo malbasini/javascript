@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+</head>
+<body>
+    😇 
+    <script>
+        let a = '😇';
+        console.log(a.length);//Occupa 2 byte 16 bit non sono sufficienti
+        console.log(a[0] + a[1]);  
+        /*Le stringhe sono immutabili vediamo cosa significa*/
+        let b = 'ciao'; 
+        b[0] = 'm';  
+        console.log(b)//Abbiamo ancora ciao non possiamo sostituire il carattere 
+        //all'indice zero.   
+        //SEUQNZE DI ESCAPE
+        /*--New line \n*/
+        let c = 'prima riga \n seconda riga';
+        console.log(c);
+        /*--Tabulazione \t*/
+        let d = 'nome\tcognome';
+        console.log(d);
+        /*--Apice-- \'--*/
+        let e = 'Ti ho vista l\'altra sera';
+        console.log(e);
+        /*--Doppio apice \"--*/
+        let f = "La porola \"Hoisting\" significa sollevamento";
+        console.log(f);
+        /*--Inserimento di caratteri unicode con \u--*/
+        let g = '\u00A9';
+        console.log(g);
+        /*--Inserimento di un backslash \\--*/
+        let h = '\\';
+        console.log(h);
+    </script>
+</body>
+</html>
