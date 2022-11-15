@@ -54,6 +54,21 @@
         /*Il tipo è sempre number sia per i numeri interi sia per quelli floating point;*/
      }
      one();
+     function fix_01_piu_02()
+     {
+        /*L'oggetto Number contiene una proprietà prototype 
+        i cui metodi e proprietà possono essere invocati sui
+        tipi primitivi. Il metodo che ci interessa è toFixed() 
+        che rstituisce una stringa e ci permette di stabilire quante 
+        cifre decimali dopo la virgola devono essere rappresentate.
+        L'operatore unario + serve a convertire la stringa in numero.*/
+        console.log(+(0.499.toFixed(1)));//0.5
+        console.log(+(0.1 + 0.2).toFixed(10));
+        //SOLUZIONE
+        let risultato = (+(0.1 + 0.2).toFixed(10)) == (+(0.3.toFixed(10)));
+        console.log('Il risultato di 0.1 + 0.2 == 0.3 è: '+risultato);
+     }
+     fix_01_piu_02();
    </script> 
 </body>
 </html>

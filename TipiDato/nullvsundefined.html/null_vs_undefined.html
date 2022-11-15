@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Null vs Undefined</title>
+
+</head>
+<body>
+    <script>
+        /*--null significa assenza di valore.
+        undefinded non definito.*/
+        let totale = null;
+        if(totale == null){
+            //fai qualcosa
+        }else{
+            console.log(totale);
+        }
+        let a; //undefinde dichiariamo a ma non assegnamo un valore.
+        console.log(a); //undefined
+        let obj = {};
+        console.log(obj.totale); //undefined
+        /*--Anche in una funzione se non effettuiamo il return
+        otteniamo undefined*/
+        function test(){
+
+        }
+        console.log(test());//undefinded
+        /*--undefined e null sono valori primitivi
+        entrambi restituiscono false.*/
+        console.log(!!null);          //false
+        console.log(!!undefined);     //false
+    </script>
+</body>
+</html>

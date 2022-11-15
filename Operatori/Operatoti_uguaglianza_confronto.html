@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operatori di confronto e di uguaglianza</title>
+</head>
+<body>
+    <script>
+        /*--Gli operatori si dividono in
+        unari, binari e ternari.*/
+        //OPERATORI UNARI
+        let a = 0;
+        a++;
+        let booleano = !!0;
+        //OPERATORI BINARI, operano su un'espressione costituita da due elementi
+        //il risultato dell'espressione è true oppure false.
+        //<, <=, >, >= questi operatori normalmente operano sui numeri
+        //ma possono essere usati anche per confrontare stringhe.
+        //Operatore di confronto semplice ==
+        //Opertaore di stretta uguaglianza ===
+        console.log('a' > 'A');//true perchè il confronto è effettuato sul codice ASCII.
+        console .log('ciao' == 'Ciao')//false JS è case-sensitive
+        console.log(' 3\n' == 3)//true
+        console.log(-0 == '0')//true
+        /*--Per quanto riguarda l'uguaglianza semplice JS opera delle
+        trasformazioni in modo automalico. Effettua quella che si chiama
+        coercizione implicita. L'operatore === impedische queste trasformazioni.*/
+        console.log(NaN == NaN)//false
+        console.log(null == undefined)//true
+        console.log('0' === 0);//false controllo sul tipo e sul valore
+        //se il tipo è diverso restituisce sempre false.
+        console.log(0 === 0)//true
+    </script>
+</body>
+</html>

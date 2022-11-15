@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Operatori logici</title>
+</head>
+<body>
+    <script>
+        //OPERATORI LOGICI
+        console.log(2 && 0);//0
+        console.log(2 && 1);//1
+        console.log(true && false);//false
+        console.log(true && true);//true
+        console.log(2 || 0);//true
+        console.log(0 || 2);//true
+        console.log(!0);//true
+        console.log(!10);//false
+        console.log(!true);//false
+        console.log(!false);//true
+
+        let v = 19;
+        let g = 'Sole';
+        if (v >= 18 && v < 22){
+            console.log('Passeggiata');
+        }
+        // true && true Passeggiata
+        if ((v >= 18 && v < 22) && (g == 'Sole') || (g == 'Nuvoloso')){
+            console.log('Passeggiata');
+        }
+        //Quando ci sono espressioni multiple è bene raggrupparle tra parentesi
+        //(true && true) && (true || false)
+        //true && true
+        //true
+    </script>
+</body>
+</html>

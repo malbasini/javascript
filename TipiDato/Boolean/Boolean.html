@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>I Boolean</title>
+</head>
+<body>
+    <script>
+        /*--Valori considerati false in javascript:
+        false, '' , Nan, null, undefined, 0, -0.
+        Tutti gli altri valori sono considerati veri.*/
+        let isDeveloper = true;
+
+        if(isDeveloper){
+            console.log('developer');
+        }else{
+            console.log('Non è un developer');
+        }
+        /*--Nella maggior parte dei casi un valore booleano
+        sarà il risultato di un'espressione.*/
+        if(4 < 3){    //false
+            console.log('4 minore di 3');
+        }else{
+            console.log('4 maggiore di 3');
+        }
+        let str1 = 'ciao';
+        let str2 = 'Ciao';
+        if(str1 == str2){
+            console.log('str1 è uguale a str2');
+        }else{
+            console.log('No perchè JS è case sensitive');
+        }
+        let a = 10, b = 0, c = 'ciao';
+        if(a){//true
+            console.log('vero');
+        }else{
+            console.log('falso');
+        }
+        if(b){//false
+            console.log('vero');
+        }else{
+            console.log('falso');
+        }
+        if(c){//true
+            console.log('vero');
+        }else{
+            console.log('falso');
+        }
+        /*--in JS abbiamo un operatore che ci consente di trasformare
+        il suo corrispettivo in booleano.E' il doppio punto escalamito.*/
+        console.log(!!'ciao');//true
+        console.log(!!0);//false
+    </script>
+</body>
+</html>
