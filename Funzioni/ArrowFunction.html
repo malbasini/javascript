@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Function</title>
+</head>
+<body>
+    <script>
+        /*--Le arrow function sono un nuovo tipo di funzioni anonime, introdotte in ES6, 
+        hanno una sintassi compatta e facilmente leggibile.*/
+        let fn = function(x){
+            return x * Math.PI;
+        }
+        //La stessa funzione con una arrow function.
+        /*--Non è necessario definire la key function,
+        si indicano i parametri se ne ha il simbolo =>
+        e il corpo della funzione. Inoltre quando vi è
+        un solo parametro non è necessario indicare
+        le parentesi tonde, inoltre se composta da
+        una singola istruzione si può togliere il return
+        e le graffe.*/
+        //let fn_a = (x) => { return x * Math.PI};
+        let fn_a = x => x * Math.PI;
+        console.log(fn(2));
+        console.log(fn_a(2));
+        /*--Le arrow function sono particolarmente adatte come callback.*/
+        let a = [2,6,9,10,29];
+        let b = a.filter(function(x)
+        {
+            return x % 2 == 0;
+        });
+        /*--Al momento non è importante capire il metodo filter. Esso
+        prende in input una callback, in x vengono passati di volta in volta
+        gli elementi dell'array. Viene verificato se il numero è pari con 
+        l'operatore modulo e se pari il numero è inserito nell'array b.*/
+        console.log(b);
+        /*--Usiamo un arrow function*/
+        let c = a.filter(x => x % 2 == 0);
+        console.log(c);
+        //ALTRI ESEMPI
+        let myFunction = (a,b) => a * b;
+        console.log(myFunction(5,4));
+        let hello1 = () => 'Hello world!';
+        console.log(hello1());
+        let hello = val => 'Hello '+ val;
+        console.log(hello('Marco!'))
+        let myFunc = a => Math.sqrt(a);
+        console.log(myFunc(144));
+    </script>
+</body>
+</html>

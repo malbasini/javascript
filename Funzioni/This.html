@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>This</title>
+</head>
+<body>
+   <script>
+    /*--Gli oggetti che sono costruiti a partire da una constructor function
+    possono avere la necessità di accedere a informazioni
+    che non devono modificare, e la necessità di avere proprietà
+    a cui assegnare valori specifici. Se facciamo ereditare delle
+    proprietà tramite l'oggetto prototype della constructor function,
+    gli oggetti non avranno una copia della proprietà, ma
+    accederanno alla proprietà definita mediante la constructor function.*/
+    function User(){
+        this.name = '';
+        this.age = null;
+        //this.type = 'User standard';
+        /*--Se abbiamo 1000 oggetti non ha senso che ognuno abbia la proprietà
+        type. Meglio impostarla nel prototype.*/
+    }
+
+    User.prototype.type = 'Utente standard';
+    let user1 = new User();
+    let user2 = new User();
+    let user3 = new User();
+    
+    console.log(user1);
+    console.log(user2);
+    console.log(user3);
+    /*--Ricapitolando: Le constructor function producono oggetti
+    definiscono proprietà comuni definite all'interno dell'oggetto
+    prototype, e definiscono altre proprietà con this di cui ogni
+    oggetto avrà la sua copia.*/
+   </script> 
+</body>
+</html>

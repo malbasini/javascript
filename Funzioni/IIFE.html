@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>IIFE</title>
+</head>
+<body>
+    <script>
+        /*--Una function expression è una funzione che viene
+        assegnata a una variabile. E' una funzione definita e 
+        invocata immediatamente.*/
+        let calcola = (function(a,b){
+            var fattore = 1.2;
+            let risultato = (a + b) * fattore;
+            console.log(+risultato.toFixed(2));
+        })(3,6);
+    /*--Questa viene chiamata IIFE viene utilizzata una sola volta,
+        è una funzione usa e getta. Proviamo ad accedere dall'ambito globale
+        alla variabile fattore definita internamente.*/
+        //console.log(fattore);
+        /*--Non riusciamo ad accedere a tale variabile in quanto la
+            IIFE vive di un proprio ambito non accessibile esternamente.
+            IIFE veniva usata in ES5 per implementare un module pattern.
+            Un pattern è un modello che definisce la risoluzione di un
+            determinato problema. Grazie alla IIFE viene creato un contesto
+            riservato al di fuori dello spazio globale. Quindi incapsulando
+            il codice senza possibilità di inquinamento dall'esterno.*/
+            let Chat = (function(){
+                 function chat(tipo){
+                    if(tipo == 'mobile'){
+                        startChatMobile();
+                    }else{
+                        startChat();
+                    }
+                }
+                 function startChat(){
+                    console.log('sto avviando la chat...');
+                }
+                 function startChatMobile(){
+                    console.log('sto avviando la chat mobile...');
+                }
+                return {
+                    init:function(tipo){
+                        chat(tipo);  
+                    }
+                }
+            })();
+            Chat.init("mobile");
+            /*--Tramite la variabile Chat noi siamo solo in grado di accedere
+                all'oggetto restituito. Non possiamo accedere a una delle 
+                funzioni che abbiamo definito. Questo meccanismo ci consente
+                di nascondere alcune informazioni (private) e di portare all'esterno
+                altre informazioni (pubbliche). Con ES6 si utilizzano, invece
+                di questo pattern, i moduli.*/
+    </script>
+</body>
+</html>

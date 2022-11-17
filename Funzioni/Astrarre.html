@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Funzioni di ordine superiore e astrazione</title>
+</head>
+<body>
+    <script>    
+        //Array
+        let a = [10,20,30,40,50];
+        /*--Supponiamo di voler invertire l'ordine*/
+        let tmp = [];
+        let lunghezza = a.length;
+        for(let i = 0; i < lunghezza; i++)
+        {
+            tmp.push(a.pop());
+            /*--push salva gli elementi in tmp. Vengono estratti con 
+            il metodo pop dell'array a partendo
+            dall'ultimo elemento dell'array. L'istruzione Pop rimuove
+            ogni elemento.Il metodo pop() in JavaScript rimuove un elemento dalla fine di un array, 
+            mentre il metodo push() aggiunge un elemento alla fine di un array. 
+            Il valore restituito dal metodo pop() è l'elemento rimosso dall'array. 
+            Il valore restituito dal metodo push() è il numero di elementi nell'array 
+            dopo che il nuovo elemento è stato aggiunto. Questi due metodi sono usati 
+            molto quando si lavora con gli array in JavaScript.  */
+        }
+        console.log(tmp);
+        console.log(a);
+        let c = [1,2,3,4,5,6]
+        /*--Esiste un metodo apposito reverse per invertire gli elementi
+        di un array. I due esempi di codice fanno la stessa cosa, tuttavia
+        reverse è da preferire in quanto meno codice significa meno possibilità
+        di introdurrre bug, tempi più rapidi di svilupp, migliore leggibilità
+        Lavorare ad un livello di astrazione superiore vuol dire lavorare con
+        strumenti che ci garantiscono l'ottenimento dell'obbiettivo desiderato
+        anche senza conoscere i dettagli implementativi.*/
+        console.log(c.reverse());
+        /*--Astrarre significa estrapolare gli elementi generali che possiamo
+        applicare di volta in volta ai casi concreti. Se abbiamo un certo
+        numero di for il concetto che possiamo estrapolare è la necessità di
+        visualizzare certi numeri, da un numero iniziale a uno finale.
+        senza utilizzare molti cicli proviamo ad utilizzare una funzione.*/
+
+        function itera(min,max){
+            for(i = min; i <= max ;i++){
+                console.log(i);
+            }
+        }
+        itera(2,12);
+        itera(2,6);
+        itera(6,9);
+        /*--Grazie alla funzione itera stiamo lavorando ad un livello di
+        astrazione più alto.*/
+    </script>
+</body>
+</html>

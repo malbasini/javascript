@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funzioni (First Class Objects)</title>
+</head>
+<body>
+    <script>
+        //Funzione anonima. Stiamo effettuando l'assegnamento
+        //di un valore a una variabile. fn conserva il riferimento
+        //alla funzione anonima.
+        let fn = function(){
+              console.log('Ciao!');
+        };
+        fn();
+        /*--Le funzioni sono cittadini di prima classe come per dire
+        sono privilegiate. Possiamo ad esempio passare una funzione
+        come parametro di un'altra funzione.*/
+        function ciao(){
+            return 'Ciao!';
+        }
+        function arrivederci(){
+            return 'Arrivederci!';
+        }
+        /*--Una funzione passata come parametro di un'altra funzione
+        viene chiamata callback. Una funzione che riceve come parametro
+        una funzione è chiamata funzione di ordine superiore. In questo
+        caso saluta è una funzione di ordine superiore.*/
+        function saluta(salutoFn){
+            console.log(`${salutoFn}`);
+        }
+        saluta(ciao());
+        saluta(arrivederci());
+
+    </script>
+</body>
+</html>

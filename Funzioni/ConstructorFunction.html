@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor Function</title>
+</head>
+<body>
+    <script>
+    /*--Gli oggetti in JS possono essere creati in diversi modi.*/
+    let obj = {};
+    let obj2 = new Object();
+    let num = 5;
+    let num2 = new Number(5);
+    /*--Cerchiamo di capire che cos'è la parola chiave new.*/
+    function User(){
+
+    }
+    console.log(User);
+    /*--Restituisce una funzione con una proprietà molto importante
+    prototype. Tale proprietà contiene un oggetto vuoto. Quindi se facciamo:
+    console.log(User.prototype);vediamo che è un oggetto vuoto. 
+    Aggiungiamo due proprietà.*/
+    User.prototype.p1 = 10;
+    User.prototype.p2 = function(x){
+        return x ** 2;
+    }
+    console.log(User.prototype);
+    /*--Ora User.prototype ha due prorietà.
+    Proviamo ad utilizzare l'operatore new sulla funzione User.*/
+    let user1 = new User();
+    let user2 = new User();
+    let user3 = User();
+    console.log(user1);
+    console.log(user2);
+    console.log(user3);
+    /*--user1 e user2 sono oggetti vuoti, mentre user3 vale undefined in 
+    quanto la funzione non ritorna nulla. Infatti quando non si usa 
+    l'operatore new alla variabile user3 viene assegnato il valore di ritorno
+    di User non essendoci un return viene correttamente assegnato undefined. 
+    La parola chiave new crea due oggetti User che vengono chiamati
+    constructor function. Una contructor function è una funzione regolare ma con due 
+    convenzioni. La funzione deve iniziare con una lettera maiuscola e deve essere
+    preceduta dalla parola chiave new. In questo caso viene creato un oggetto
+    che eredita proprietà e metodi da User.prototype. Le proprietà p1 e p2 vengono automaticamente 
+    ereditate da user1 e da user2. Infatti se facciamo:*/
+    console.log(user1.p1);//Viene stampato correttamente 10.
+    console.log(user2.p2(2));//Viene stampato correttamente 4.
+    let obj3 = new Object();
+    /*Creazione della constructor function Object*/
+    console.log(typeof Object);//function
+    /*Creazione della constructor function Number*/
+    let numero = new Number(5);
+    console.log(typeof Number);//function
+    </script>
+    
+</body>
+</html>

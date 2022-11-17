@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esercitazione 1</title>
+</head>
+<body>
+    <script>
+        /*--Scrievere una funzione che accetta una stringa e restituisce
+        la parola più lunga all'interno della stringa.*/
+        function test(stringa){
+            let parole = stringa.split(' ');
+            let parola = '', tmp = '';
+            for (item of parole){
+                tmp = item;
+                if(tmp.length >= parola.length ){
+                    parola = tmp;
+                }
+            }
+            return parola;
+        }
+        let risultato = test('Oggi è una strafighissima giornata');
+        console.log(risultato);
+    </script>
+</body>
+</html>
