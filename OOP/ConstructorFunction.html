@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Da oggetto letterale a constructor function</title>
+</head>
+<body>
+    <script>    
+        let user1 = {
+           name:"Gianluca",
+           descrivimi:function() {return `Nome : ${this.name}`}
+        };
+        let user2 = {
+            name:"Loris",
+            descrivimi:function() {return `Nome : ${this.name}`}
+         };
+         let user3 = {
+            name:"Sandra",
+            descrivimi:function() {return `Nome : ${this.name}`}
+         };
+         //Non stiamo rispettando il principo della non duplicazione
+         //del codice. Usiamo un factory function.
+         function user(nome){
+            let obj = {
+                name:nome,
+                descrivimi:function() {return `Nome : ${this.name}`}
+            };
+            return obj;
+         }
+         let user4 = user('Marco');
+         console.log(user4.descrivimi);
+         //Creiamo una constructor function
+         function Utenti(nome){
+            this.name = nome;
+            this.descrivimi = function() {return `Nome : ${this.name}`};
+         }
+         let user5 = new Utenti('Noemi');
+         let user6 = new Utenti('Luca');
+         let user7 = new Utenti('Luigi');
+         console.log(user5.descrivimi());
+         /*--Sia con la factory function che con la constructor function
+         possiamo creare quanti oggetti vogliamo. La sintassi della
+         constructor function è molto più compatta della factory function.
+         Nella constructor function internamente il motore js crea un oggetto
+         e fa in modo che this sia un riferimento a questo oggetto. Alla fine
+         restituisce l'oggetto.
+         */
+    </script>
+</body>
+</html>

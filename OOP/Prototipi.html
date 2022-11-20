@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototipi</title>
+</head>
+<body>
+    <script>
+        /*Supponiamo di voler creare un oggetto il cui prototipo
+        sia l'oggetto ferrari.*/
+        let ferrari = {
+            marchio : "Ferrari u\{1F3CE}",
+            dal :1921,
+            colore : 'rosso'
+        }
+        let ferrari_458 = Object.create(ferrari);
+        ferrari_458.cilindrata = 2000; 
+        ferrari_458.cavalli = 680;
+        //ferrari_458.colore = "rosso opaco";
+        //console.log(ferrari_458.colore);//rosso opaco
+        /*--Il motore js va a vedere se innanzitutto trova la
+        proprietà colore sull'oggetto corrente, se non la trova
+        risale la catena dei prototipi. Una catena normalmente lega più di
+        due elementi*/
+        let ferrari_458_special = Object.create(ferrari_458);
+        //ferrari_458_special il suo prototipo è ferrari_458 creato con
+        //Object.create(nome prototipo)
+        //ferrari_458_special.colore = "nero";
+        console.log(ferrari_458_special.toString());//ereditato dalla proprietà
+        //prototype di Object.
+        let obj = {};//new Object()
+        /*--Quando creiamo un oggetto letterale vuoto in realta quello
+        che dietro le quinte fa il motore js è creare un oggetto con new Object() */
+        console.log(Object);
+        //I nostri oggetti ereditano le proprietà inserite nel prototype di Object.
+    </script>
+</body>
+</html>

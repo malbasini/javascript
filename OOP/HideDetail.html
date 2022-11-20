@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Nascondere i dettagli ed esporre solo l'essenziale</title>
+</head>
+<body>
+    <script>
+        function User(name,altezza){
+            let privata = 'Informazione privata';
+            this.name = name;
+            this.altezza = altezza;
+            this.pesoIdeale = function(){
+                return `Peso ideale: ${calcolaPesoIdeale()}`;
+            }
+            let calcolaPesoIdeale = function(){
+                return altezza - 100 * 0.95;
+            }
+        }
+        User.prototype.type = 'Utente standard';
+        let user1 = new User('Simone',175);
+        console.log(user1.calcolaPesoIdeale);//undefined
+        /*Tramite questo semplice meccanismo siamo stati in grado di esporre
+        alcune informazioni e nasconderne altre.*/
+        console.log(user1.pesoIdeale());
+    </script>
+</body>
+</html>

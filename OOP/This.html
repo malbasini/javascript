@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(this);//this è un riferimento all'oggetto window
+
+        function test(){
+            console.log(this.p1);
+            /*--In realtà this dipende dal modo in cui viene invocata
+            la funzione.*/
+        }
+        
+        let obj1 = {
+            p1 :20,
+            fn:test
+        };
+        obj1.fn();//this fa riferimento a obj1
+
+        let obj2 = {
+            p1 : 60,
+            fn:test
+        };
+        obj2.fn();//this fa riferimento a obj2
+        //test();Se invocata dall'ambito globale this fa riferimento a window.
+        //Con un oggetto le cose cambiano.
+        let obj3 = {
+           p1 : 30, 
+           fn : function(){
+              console.log(this.p1); //stampa 30. this è un riferimento all'oggetto obj.
+           }
+        };
+        obj3.fn();
+    </script>
+</body>
+</html>

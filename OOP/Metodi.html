@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="i">
+<head>
+    <meta charset="UTF-8">
+    <title>GetPrototypeOf e SetPrototypeOf</title>
+</head>
+<body>
+    <script>    
+        let obj1 = {
+            p1:"v1",
+            p2:"v2",
+            p3:"v3",
+        };
+        let obj2 = Object.create(obj1);//Vogliamo che obj1 sia il prototipo di obj2
+        obj2.p4 = "v4";
+        obj2.fn1 = () => 2**3;//Questa sintassi è alquanto scomoda definiamo un
+        //nuovo oggetto.
+        let obj3 = {
+            p4 : "v4",
+            fn1 : () => 2**4
+        };
+        Object.setPrototypeOf(obj3,obj1);
+        /*--Passiamo come primo parametro l'oggetto che deve avere come
+        prototipo il secondo parametro.*/
+        console.log(obj3.__proto__ == obj1);//true
+        /*__proto__ è deprecata, per conoscere il prototipo di un oggetto 
+        dobbiamo usare questa sintassi.*/
+        console.log(Object.getPrototypeOf(obj3));
+    </script>
+</body>
+</html>

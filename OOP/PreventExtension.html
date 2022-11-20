@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Object.preventExtensions</title>
+</head>
+<body>
+    <script>
+        /*--Impedire l'aggiunta di nuove proprietà*/
+        let obj = {
+            p1:10
+        };
+        Object.preventExtensions(obj);
+        obj.p2 = 20;
+        console.log(obj.p2);//undefined
+        let user = {
+            info : {
+                nome:'Anna',
+                anni:25
+            }
+        };
+        Object.preventExtensions(user);
+        //Possiamo aggiungere proprietà all'oggetto user.info.
+        user.info.lavoro = 'Ballerina';
+        console.log(user.info.lavoro);
+        /*--Se vogliamo eliminare le proprietà di un oggetto non estendibile
+        possiamo farlo.*/
+        delete user.info;
+
+        /*Invocando console.table() è possibile visualizzare dati in formato tabulare.*/
+        const obj1 = {
+            nome : "Gianluca",
+            lavoro : "Web Dev"
+        };
+        const obj2 = {
+            nome : "Michele",
+            lavoro : "Medico"
+        };
+        console.table({obj1, obj2});
+    </script>
+</body>
+</html>

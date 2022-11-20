@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Proto</title>
+</head>
+<body>
+    <script>
+        /*--Possiamo risalire la catena dei prototipi attraverso
+        la proprietà __proto__*/
+        let obj = {}; //internamente JS esegue new Object()
+        console.log(obj.__proto__ == Object.prototype);
+        /*--Il prototype di obj è Object.prototype.*/
+        function Ferrari(){
+
+        }
+        Ferrari.prototype.marchio = "\u{00A9} Ferrari";
+        let ferrari_458 = new Ferrari();
+        console.log(ferrari_458.__proto__ == Ferrari.prototype);//prototype di ferrari_458
+        console.log(ferrari_458.__proto__.__proto__.__proto__);//Risaliamo la catena
+        let ferrari_458_special = Object.create(ferrari_458);
+        console.log(ferrari_458_special.__proto__== ferrari_458);
+    </script>
+</body>
+</html>

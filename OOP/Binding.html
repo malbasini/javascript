@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Binding esplicito con Bind, Call e Apply</title>
+</head>
+<body>
+    
+    <script>
+        /*Sappiamo oramai che this è il riferimento al contesto
+        di esecuzione ovvero al contesto di un oggetto.*/
+        
+        function test(){};
+            let obj = {
+                fn:test
+            };
+        window.test()
+        obj.fn();
+        let obj1 = {
+            nome : "Gianluca"
+        };
+        let obj2 = {
+            nome : "Luisa"
+        };
+        function saluta(indirizzo,lavoro){
+            console.log(`Ciao sono ${this.nome}. Abito in ${indirizzo} e
+            lavoro come ${lavoro}`);
+        }
+        saluta.call(obj2,"Via della fontana, 7","Operaio");
+        saluta.apply(obj1,["Via della fontana, 7","Programmatore"]);
+        let rif = saluta.bind(obj1);
+        rif("Via della fontana, 7","Infermiera")
+        /*--this.nome è undefined in quanto invochiamo la funzione dal
+        contesto globale. this fa riferimento a window che non ha una 
+        proprietà nome. Possiamo fare in modo con binding esplicito che this
+        anzichè riferirsi a window, si riferisca a obj1 o obj2. Usando
+        call e mettendo come primo parametro obj1, this si riferisce ora a
+        obj1. apply lavora allo stesso modo sole che dobbiamo passare i parametri
+        come array. bind lavora in modo diverso, asscocia this al primo parametro
+        passato e restituisce un riferimento alla funzione.*/
+    </script>
+</body>
+</html>

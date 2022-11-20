@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>This e Arrow Function</title>
+</head>
+<body>
+    <script>
+        var user = {
+            nome : "Serena",
+            fn1 : function(){
+                console.log(this.nome);
+            },
+            fn2 : () => {console.log(this.nome)}
+        };
+        //console.log(window.user);//undefined se dichiarata con let o const.
+        /*Con let o const la variabile non viene aggiunta all'oggetto
+        window. Però se utilizziamo var la proprietà viene aggiunta
+        all'oggetto window. Utilizziamo var.*/
+        user.fn1();
+        user.fn2();
+        /*in fn1() this fa riferimento all'oggetto user, in fn2 a window. 
+        Se abbiamo una funzione che deve lavorare con le proprietà di un oggetto
+        usiamo la sintassi classica, altrimenti le arrow function.*/
+    </script>
+</body>
+</html>

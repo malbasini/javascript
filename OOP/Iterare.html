@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Iterare gli oggetti</title>
+</head>
+<body>
+    <script>
+        let obj_padre = {
+           key4: "value4"
+        };
+
+        let obj = {
+           key1:"value1",
+           key2:"value2",
+           key3:"value3",
+        };
+        Object.setPrototypeOf(obj,obj_padre);
+        /*--Visualizziamo le chiavi e i valori con obj[key]
+        il ciclo for in risale anche la catena dei prototipi.*/
+        
+        for(let key in obj){
+            if(obj.hasOwnProperty(key)){//visualizziamo solo chiavi e valori di obj
+                console.log(key, obj[key]);
+            }
+        }
+        let items = Object.keys(obj);//Array
+        /*--Possiamo utilizzare anche questa sintassi:*/
+        items = Object.getOwnPropertyNames(obj);
+        /*--Se siamo interessati aolo ai valori possiamo usare questa sintassi:*/
+        items = Object.values(obj);
+        for(let item of items){
+            //console.log(item,obj[item]);//chiavi e valori
+            console.log(item);//valori
+        }
+    </script>
+</body>
+</html>

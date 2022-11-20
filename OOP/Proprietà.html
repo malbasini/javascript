@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Accedere alle proprietà di un oggetto</title>
+</head>
+<body>
+    <script>
+        /*JS trasforma internamente la prprietà name in una stringa.
+        se abbiamo un identificatore non valido utilizzando la dot
+        notations otteniamo un errore. In questo caso si usano le
+        parentesi quadre.*/
+        let user = {
+            name:'Gianluca',
+            4:'Ciao',
+            'Buon Giorno':'saluti'
+        };
+        console.log(user.name);
+        console.log(user[4]);
+        /*--Possiamo scrivere per accedere alla proprietà con chiave 4*/
+        console.log(user[3+1]);
+        console.log(user[2*2]);
+        console.log(user['Buon Giorno']);
+        let nome = "name";
+        /*--Supponiamo di non conoscere la proprietà name dell'oggetto user,
+            ma abbiamo a disposizione solo la variabile nome.*/
+        console.log(user.nome)//Proprietà inesistente restituisce undefined
+        /*se racchiudiamo nome tra parentesi quadre abbiamo la proprietà
+        name dell'oggetto user, questo perchè il motore JS cerca una variabile
+        nome e se la trova la sostituisce con il suo valore.*/
+        console.log(user[nome]);
+    </script>
+</body>
+</html>
