@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Metodi</title>
+</head>
+<body>
+    <script>
+        class UserClass{
+            /*Per inizializzare le proprietà come abbiamo fatto con la
+            constructor function dobbiamo usare un metodo speciale chiamato
+            constructor. All'interno di una classe non possiamo definire
+            variabili con let, var o const come si fa per le constructor function.*/
+            constructor(nome, anni){
+                this.nome = nome;
+                this.anni = anni;
+            }
+            info(){
+                return `Nome ${this.nome} età ${this.anni}`;
+            }
+        }
+        let mirco = new UserClass('Mirco', 26);
+        console.log(mirco.info());
+        /*--I metodi definiti in una classe
+        vengono inseriti nell'oggetto prototype della classe.*/
+        console.log(UserClass);
+        //Tutto il codice della classe è equivalente a.
+        function UserClass2(nome, anni){
+            this.nome = nome;
+            this.anni = anni;
+        }
+        UserClass2.prototype.info = function(){
+            return `Nome ${this.nome} età ${this.anni}`;
+        }
+        console.log(UserClass2);
+    </script>
+</body>
+</html>

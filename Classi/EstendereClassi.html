@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Estendere una classe</title>
+</head>
+<body>
+    <script>
+        class Prodotti{
+            constructor(marca, modello, prezzo){
+                this.marca = marca;
+                this.modello = modello;
+                this.prezzo = prezzo;
+            }
+           
+            descrivimi(){
+                return `marca ${this.marca}, modello ${this.modello}\n prezzo ${this.prezzo}`;
+            }
+        }
+        class Elettrodomestici extends Prodotti{
+            constructor(marca, modello, prezzo,categoria){
+                super(marca, modello, prezzo);
+                //Quando la sottoclasse ha un proprio costruttore
+                //dobbiamo invocare il costruttore parent con la
+                //parola chiave super. La classe estesa si chiama
+                //superclasse la classe che la estende sottoclasse.
+                this.categoria = categoria;
+            }
+            descrivimi(){
+                return `Categoria ${this.categoria} ${super.descrivimi()}`;
+            }
+        }
+        const ele = new Elettrodomestici('LG','65 pollici',820,'TV');
+        console.log(ele.descrivimi());//Viene invocato il metodo della sottoclasse
+        /*--Abbiamo un oggetto con 4 proprietà, 3 sono state inizializzate
+        dal costruttore parent (Prodotti) l'ultima, categoria dalla classe 
+        Elettrodomestici*/
+    </script>
+</body>
+</html>

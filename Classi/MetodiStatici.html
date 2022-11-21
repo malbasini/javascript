@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Metodi e proprietà statiche</title>
+</head>
+<body>
+    <script>
+        class User{
+            static count = 0;//Proprietà statica
+            constructor(nome, anni, altezza){
+                this.nome = nome;
+                this.anni = anni;
+                this.altezza = altezza;
+                this.titoloDiStudio = '';
+            }
+            //GETTER
+            get pesoIdeale(){
+                return (this.altezza - 100) * 0.9;
+            }
+            //SETTER
+            set titolo(value){
+                this.titoloDiStudio = value;
+            }
+            //METODO STATICO
+            static confronta(persona1, persona2){
+                let str = '';
+                const diff = Math.abs(persona1.anni - persona2.anni);
+                if(persona1.anni > persona2.anni){
+                    str += `${persona1.nome} ha ${diff} anni in più di
+                    ${persona2.nome}`
+                }else{
+                    str += `${persona1.nome} ha ${diff} anni in meno di
+                    ${persona2.nome}`
+                }
+                console.log(str);
+            }
+            fn(){
+                User.fn2();
+            }
+            static fn2(){
+                console.log("Accesso al metodo statico da un metodo non statico.");
+            }
+        }
+        const maria = new User("Maria",23,170);
+        const lucia = new User("Lucia",25,165);
+        User.confronta(maria,lucia);
+        lucia.fn();
+        User.count++;
+        console.log(User.count);
+
+    </script>
+</body>
+</html>

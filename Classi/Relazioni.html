@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Relazioni tra superclassi e sottoclassi</title>
+</head>
+<body>
+    <script>    
+        class User{
+
+        }
+        class UserInfo extends User{
+
+        }
+        const marco = new UserInfo();
+        console.log(Object.getPrototypeOf(marco)==UserInfo.prototype);
+        console.log(Object.getPrototypeOf(UserInfo.prototype)==User.prototype);
+        console.log(marco instanceof UserInfo);//true
+        console.log(marco instanceof User);//true
+        console.log(marco instanceof Object);//true
+        /*--Si risale la catena dei prototipi*/
+    </script>
+</body>
+</html>

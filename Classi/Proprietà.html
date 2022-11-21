@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Proprietà pubbliche e private</title>
+</head>
+<body>
+    <script>
+        /*--Da ES2019 è possibile definire una proprietà
+        al fuori del costruttore.*/
+
+
+        class UserClass{
+            
+            avatar = "Nessun avatar";
+            #privata = 'Proprietà privata';
+            /*--avatar è una proprietà pubblica accessibile
+            attraverso gli oggetti. Da ES2019 possiamo definire
+            proprietà private accessibili solo internamente alla classe.*/
+
+            constructor(nome){
+                this.nome = nome;
+            }
+            info(){
+                return `Nome ${this.nome}`;
+            }
+            getPrivata(){
+                return this.#privata;
+            }
+        }
+        const monica = new UserClass("Monica");
+        /*Proviamo ad accedere all proprietà avatar*/
+        console.log(monica.avatar);
+        console.log(monica.privata);//undefined
+        console.log(monica.getPrivata());
+    </script>
+</body>
+</html>

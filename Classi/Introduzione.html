@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduzione</title>
+</head>
+<body>
+    <script>
+        /*Una constructor function normalmente
+        riceve in input dei parametri e utilizziamo
+        this per fare in modo che gli oggetti creati
+        dalla constructor function abbiano una copia
+        di quelle proprietà con i valori passati in
+        input. */
+        function User(nome, anni){
+            this.nome = nome;
+            this.anni = anni;
+            /*Abbiamo creato 2 proprietà con la sintassi
+            this.nomeproprietà*/
+        }
+        const marco = new User('Marco', 53);
+        console.log(marco);//Object con 2 proprietà
+        /*Utilizziamo una classe*/
+        class UserClass{
+            /*Per inizializzare le proprietà come abbiamo fatto con la
+            constructor function dobbiamo usare un metodo speciale chiamato
+            constructor.*/
+            constructor(nome, anni){
+                this.nome = nome;
+                this.anni = anni;
+            }
+        }
+        const michele = new UserClass("Michele", 29);
+        /*L'oggetto michele si dice che è una istanza di
+        UserClass*/
+        console.log(michele);//Il risultato è lo stesso della constructor function
+        //creato oggetto con 2 proprietò nome e anni. Il prototipo dell'oggetto michele
+        //si trova in UserClass.prototype
+        console.log(Object.getPrototypeOf(michele)==UserClass.prototype);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Getter e Setter</title>
+</head>
+<body>
+    <script>
+        /*--Un metodo getter restituisce un valore, setter
+        imposta il valore di una proprietà.*/
+        class User{
+            constructor(nome, anni, altezza){
+                this.nome = nome;
+                this.anni = anni;
+                this.altezza = altezza;
+                this.titoloDiStudio = '';
+            }
+            //GETTER
+            get pesoIdeale(){
+                return (this.altezza - 100) * 0.9;
+            }
+            //SETTER
+            set titolo(value){
+                this.titoloDiStudio = value;
+            }
+        }
+        const maria = new User("Maria",23,170);
+        console.log(maria.pesoIdeale);
+        maria.titoloDiStudio = "Ingegnere";
+        console.log(maria.titoloDiStudio);
+    </script>
+</body>
+</html>
