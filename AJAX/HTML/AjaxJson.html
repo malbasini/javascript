@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX e JSON</title>
+    <style>
+        section{
+            border: 1px solid #333;
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Mostra Utenti</button>
+    <section id="utentiSection"></section>
+    <script>
+        const btn = document.getElementById('btn');
+        const sezione = document.getElementById('utentiSection');
+        btn.addEventListener('click',function(){
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET','../JSON/utenti.json',true);
+            xhr.send();
+            xhr.onload = function(){
+                if(xhr.status === 200){
+                    const utentiJSON = xhr.responseText;
+                    /*--Dobbiamo trasformare la stringa JSON in array JS*/
+                    const utenti = JSON.parse(utentiJSON);
+                    showUtenti(utenti);
+                }
+            }
+
+        });
+        function showUtenti(utenti){
+            sezione.textContent = '';
+            if(utenti.length > 0){
+                utenti.forEach((utente, i) => {
+                   showUtente(utente);
+                });
+            }else{
+                sezione.textContent = 'Nessun utente da mostrare';
+            }
+        }
+        function showUtente(utente){
+            /*--VEDREMO L'OGGETTO DOCUMENT QUANDO PARLEREMO DEL DOM*/
+            let newUserDiv = document.createElement('div');
+            newUserDiv.style.border = "1px solid #999";
+            newUserDiv.style.marginTop = "10px";
+            newUserDiv.style.padding = "10px";
+            newUserDiv.innerHTML = `
+            nome: ${utente.nome} <br>
+            anni: ${utente.anni} <br>
+            lavoro: ${utente.lavoro} <br>
+            `;
+            sezione.appendChild(newUserDiv);
+        }
+    </script>
+</body>
+</html>

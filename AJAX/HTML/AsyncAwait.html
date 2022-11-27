@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>ASYNC/AWAIT-FUNZIONI ASINCRONE</title>
+</head>
+<body>
+    <script>
+       /*La specifica ES2017 ha introdotto la specifica delle
+       funzioni asincrone con async/await. Sono basate sulle
+       promise. Per rendere una funzione asincrona utilizziamo
+       la keyword async. La funzione ritorna una promise.
+       all'interno di una funzione asincrona invece di dover
+       concatenare sempre then si utilizza await. Con await*/
+       async function test(){
+          return 'dentro la funzione';
+       }
+       console.log('inizio');
+       test().then((risp) =>{
+          console.log(risp);
+       });
+       console.log('fine');
+
+       async function utenti(){
+            /*con await diciamo al motore javascript aspetta
+            che la promise venga risolta poi metti il risultato in
+            utentiJSON*/
+            const utentiJSON = await fetch('../JSON/utenti.json');
+            const utenti = utentiJSON.json();
+            return utenti;
+       }
+       utenti().then((risp) => {
+           console.log(risp);
+       });
+    </script>
+</body>
+</html>

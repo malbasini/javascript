@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX E REST API</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET','https://jsonplaceholder.typicode.com/posts',true);
+        xhr.send();
+        xhr.onload = function(){
+            if(this.readyState === 4 && this.status === 200){
+                //Convertiamo in Array JS
+                const posts = JSON.parse(this.responseText);
+                showPosts(posts);
+            }
+        }
+        function showPosts(posts){
+            posts.forEach((post,i) => {
+                console.log(`${post.body} \n ${post.id}`);
+                //RECUPERIAMO I COMMENTI
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET',`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`,true);
+                xhr.send();
+                xhr.onload = function(){
+                    if(this.readyState === 4 && this.status === 200){
+                        //Convertiamo in Array JS
+                        const comments = JSON.parse(this.responseText);
+                        console.log(` Post: ${post.body} \n Post Id: ${post.id} \n`);
+                        console.log('---------------------COMMENTI INIZIO-----------------------------');
+                        comments.forEach((commento,i) => {
+                            myFunction(commento);
+                        });
+                        console.log('---------------------COMMENTI FINE-----------------------------');
+                    }
+                }
+                
+            });
+        }
+        let myFunction = commento => {console.log(commento.body);}
+    </script>
+</body>
+</html>

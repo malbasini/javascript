@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX RICHIESTE DI TIPO POST</title>
+</head>
+<body>
+    <input type="text" id="username" placeholder="Invio">
+    <script>
+       //Recuperiamo l'elemento input
+       const inp = document.getElementById('username');
+       inp.addEventListener('keypress',function(e){
+          /*Vogliamo che quando l'utente preme il tasto invio
+          il testo nell'input sia passato ad uno script php.*/
+          if(e.key === 'Enter'){invia(this.value);}
+       });
+       function invia(username){
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST','http://localhost/test.php',true);
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.send('username=' + username);
+            xhr.onload = function(){
+                if(xhr.status === 200){
+                    console.log(xhr.responseText);
+                }
+            }
+            
+       }
+    </script>
+    
+</body>
+</html>

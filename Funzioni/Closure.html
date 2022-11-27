@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Closure</title>
+</head>
+<body>
+    <script>
+        /**/
+        function fn(a){
+            let sum = a + 10;
+            console.log(sum);
+        }
+        fn(5);
+        /*In fase di invocazione di fn() viene creato un contesto di
+        esecuzione specifico e le variabili a e sum vengono messe in
+        memoria con i rispettivi valori. Terminata l'esecuzione quella copia
+        di a e di sum vengono rimosse dalla memoria, non esistono più.*/
+        function fn2(a){
+            let fattore = 1.8;
+            return () => {
+                let calcolo = (fattore * a) - 10;
+                console.log(calcolo);
+            }
+        }
+        const rif = fn2(100);
+        /*Dato che fn2 è stata eseguita in questo punto del codice
+        e dato che la copia di 100 in a e il valore di fattore
+        sono stati rimossi dalla memoria in quanto
+        l'esecuzione è terminata, allora rif che deve accedere
+        a tali valori non dovrebbe riuscirci.*/
+        rif();//Invece rif riesce tranquillamente ad accedere 
+        //al valore 100 di a e al valore 1.8 di fattore.
+        /*Quando una funzione ritorna un'altra funzione
+        entra in gioco il concetto di closures. La funzione
+        interna effettua una chiusura sul contesto di esecuzione
+        esterno */
+        const rif2 = fn2(200);
+        rif2();
+    </script>
+</body>
+</html>

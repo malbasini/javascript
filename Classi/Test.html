@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Test del codice</title>
+</head>
+<body>
+    <script>
+        class User {
+            constructor(name) {
+            // invoca il setter
+            this.name = name;
+            }
+            get name() {
+                return this._name;
+            }
+            set name(value) {
+                    if (value.length < 4) {
+                        alert('Name is too short.');
+                        return;
+                    }
+                    this._name = value;
+                }
+            }
+            let user = new User('John');
+            alert(user.name); // John
+            user = new User(''); // Nome troppo corto.
+    </script>
+</body>
+</html>

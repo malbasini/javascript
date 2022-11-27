@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Stati della richiesta AJAX</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        //XMLHttpRequest
+        xhr.onprogress = function() {
+            console.log("onprogress (scaricamento)");
+        }
+       
+        xhr.onreadystatechange = function(){
+            switch(xhr.readyState){
+                case 0:{
+                    console.log('Istanza creata');break;
+                }
+                case 1:{
+                    console.log('Invocato metodo open');break;
+                }
+                case 2:{
+                    console.log('Ricevuto headers di riposta' + xhr.getAllResponseHeaders());break;
+                }
+                case 3:{
+                    console.log('Dati in fase di scaricamento');break;
+                }
+                case 4:{
+                    console.log('Operazione completata');break;
+                }
+               
+            }   
+        }
+        console.log(xhr.readyState);//0
+        xhr.open("GET", "../file1.txt",true);
+        console.log(xhr.readyState);//1
+        xhr.send();
+        xhr.onload = function() {
+            /*Per quanto riguarda il completamento dell'operazione
+             dobbiamo anche controllare se l'operazione è andata a buon fine.
+             lo facciamo con la proprietà status che deve assuemere valore 200.*/
+            if(xhr.status === 200){
+                console.log(xhr.responseText);//Lettura file
+            }else if(xhr.status === 404){
+                console.log("Risorsa non trovata");
+            }else if(xhr.status === 500){
+                console.log("Errore del server");
+            }
+        }
+    </script>
+</body>
+</html>
