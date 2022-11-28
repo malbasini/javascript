@@ -11,7 +11,8 @@
        const inp = document.getElementById('username');
        inp.addEventListener('keypress',function(e){
           /*Vogliamo che quando l'utente preme il tasto invio
-          il testo nell'input sia passato ad uno script php.*/
+          il testo nell'input sia passato ad uno script php.
+          this.value è il testo nella casella di input.*/
           if(e.key === 'Enter'){invia(this.value);}
        });
        function invia(username){
@@ -20,7 +21,7 @@
             xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
             xhr.send('username=' + username);
             xhr.onload = function(){
-                if(xhr.status === 200){
+                if(xhr.status === 200 && xhr.readyState === 4){
                     console.log(xhr.responseText);
                 }
             }

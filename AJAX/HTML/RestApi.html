@@ -7,6 +7,7 @@
 <body>
     <script>
         const xhr = new XMLHttpRequest();
+        //RECUPERIAMO I POSTS
         xhr.open('GET','https://jsonplaceholder.typicode.com/posts',true);
         xhr.send();
         xhr.onload = function(){
@@ -30,7 +31,7 @@
                         console.log(` Post: ${post.body} \n Post Id: ${post.id} \n`);
                         console.log('---------------------COMMENTI INIZIO-----------------------------');
                         comments.forEach((commento,i) => {
-                            myFunction(commento);
+                            showComment(commento);
                         });
                         console.log('---------------------COMMENTI FINE-----------------------------');
                     }
@@ -38,7 +39,8 @@
                 
             });
         }
-        let myFunction = commento => {console.log(commento.body);}
+        //UTILIZZIAMO UN'ESPRESSIONE LAMBDA
+        let showComment = commento => console.log(commento.body);
     </script>
 </body>
 </html>

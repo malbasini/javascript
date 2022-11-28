@@ -17,7 +17,8 @@
         Per quanto riguarda il corpo della risposta
         abbiamo un ReadableStream, che altro non è
         che un flusso di dati che necessita di
-        conversione ad uno specifico formato.*/
+        conversione ad uno specifico formato. I metodi text()
+        e json() restituiscono rispettivamente delle promise.*/
         fetch('../JSON/utenti.json').then((risposta)=>{
             return risposta.json().then((dati) => {
                 console.log(dati);

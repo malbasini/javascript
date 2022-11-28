@@ -39,9 +39,9 @@
         xhr.onload = function() {
             /*Per quanto riguarda il completamento dell'operazione
              dobbiamo anche controllare se l'operazione è andata a buon fine.
-             lo facciamo con la proprietà status che deve assuemere valore 200.*/
+             lo facciamo con la proprietà status che deve assumere valore 200.*/
             if(xhr.status === 200){
-                console.log(xhr.responseText);//Lettura file
+                console.log(xhr.responseText);//Risposta
             }else if(xhr.status === 404){
                 console.log("Risorsa non trovata");
             }else if(xhr.status === 500){

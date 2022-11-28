@@ -3,17 +3,19 @@
 <body>
 <script>
     console.log(1);
-    const xhr = new XMLHttpRequest();//E' la prima cosa da fare, creare l'oggetto
-    //XMLHttpRequest
-    xhr.onload = function() {
-      console.log(xhr.responseText);
-    }
+    const xhr = new XMLHttpRequest();
+    //La prima cosa da fare è creare l'oggetto XMLHttpRequest
     /*La seconda cosa da fare è aprire una connessione con il server (open).
     true indica che i dati saranno scambiati in modo asincrono.
+    Una volta aperta la connessione, inviamo la richiesta con il
+    metodo send(). La proprietà responseText fornisce la risposta.
     Per dimostrare che stiamo lavorando in modo asincrono facciamo
     console.log(1) all'inizio e console.log(2) alla fine.*/
     xhr.open("GET", "../file1.txt",true);
     xhr.send();
+    xhr.onload = function() {
+      console.log(xhr.responseText);
+    }
     console.log(2);
 </script>
 </body>
