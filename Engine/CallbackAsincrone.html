@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>CALLBACK ASINCRONE</title>
+</head>
+<body>
+    <script>
+     console.log(1);
+
+     const callback = function(){
+        console.log(2);
+     }
+
+     setTimeout(callback,5000);
+
+     console.log(3);
+    </script>
+</body>
+</html>

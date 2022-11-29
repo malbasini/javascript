@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EXECUTION CONTEXT</title>
+</head>
+<body>
+    <script>
+        //GLOBAL EXECUTION CONTEXT
+
+
+
+        //OGGETTO GLOBALE WINDOW
+        console.log(window);
+        //this è un riferimento all'oggetto windows
+        console.log(this);
+        console.log(a);/*--Stampa undefined perchè la variabile globale a
+        nella creation phase viene messa in memoria con valore undefined.
+        Nella fase di esecuzione del contesto di esecuzione globale
+        viene assegnato il valore 20 ad a quindi possiamo visualizzarla.*/
+        var a = 20;
+        console.log(a);
+
+        test();
+        /*--Le funzioni definite in questo modo vengono interamente
+        messe in memoria nella creation phase del contesto di esecuzione
+        globale. Per questo se la invochiamo prima della sua definizione
+        riusciamo ad eseguirla senza problemi.*/
+        function test(){
+            console.log('Ciao da test!');
+        }
+        //fn();
+        /*--Abbiamo un errore essendo l'assegnamento di una variabile fn
+        definita con const, in questo caso non abbiamo hoisting.*/
+        const fn = function(){
+            console.log('function expression');
+        }
+        //FUNCTION EXECUTION CONTEXT
+
+        function fn1(){
+            b();
+            console.log(arguments);
+            console.log(a);//Errore di riferimento occorre dichiarare
+            //la variabile con var
+            var a = 20;//undefined avviene l'hoisting
+            //avviene l'hoisting anche per funzioni definite internamente
+            //con questa sintassi
+            function b(){
+                console.log('ciao da b!');
+            }
+        }
+        fn1(10,20,30);
+    </script>
+</body>
+</html>
