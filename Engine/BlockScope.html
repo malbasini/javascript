@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Differenza tra var, let e const</title>
+</head>
+<body>
+    <script>
+        /*Un block scope viene definito dentro le parentesi graffe
+        si trova anche all'interno di if, while, for etc.
+        Il block scope non è supportato da var, ma lo è da let e const.*/
+        {
+            //var n = 20;
+            let n = 20;
+            /*--Anche in un block scope le funzioni più interne
+            riescono ad accedere a variabili dichiarate esternamente.
+            ma non vale il contrario, esternamente non riusciamo ad
+            accedere a n.*/
+            function fn()
+            {
+                console.log(n);
+            }
+            fn();
+
+        }
+        //console.log(n);//Riusciamo ad accedere alla variabile n con var.
+        //ma se definiamo n con let o const abbiamo un errore
+        //di riferimento.
+    </script>
+</body>
+</html>

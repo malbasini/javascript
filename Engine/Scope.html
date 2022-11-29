@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope (Ambito di visibilità)</title>
+</head>
+<body>
+    <script>    
+        //GLOBAL SCOPE
+        let n = 20;
+        function fn()
+        {
+            //SCOPE LOCALE #1
+
+            /*Dallo scope locale creato dalla funzione riusciamo
+            ad accedere allo scope globale dove è dichiarata la
+            variabile n.*/
+            console.log(n);
+            let m = 10;
+            fn2();
+            function fn2(){
+                //SCOPE LOCALE #2
+
+                /*--Uno scope più interno ha visibilità su
+                quelli più esterni ma non viceversa*/
+                console.log(m);//stampa 10
+            }
+        }
+        fn();
+        //console.log(m);
+
+        /*--Abbiamo un errore dallo scope globale non possiamo accedere
+        a variabili interne alla funzione. Queste sono variabili locali
+        ed hanno vita esclusivamente all'interno della funzione.*/
+
+        //GLOBAL SCOPE
+        
+        function fn3(){
+            //SCOPE LOCALE #3
+        }
+
+        //GLOBAL SCOPE
+    </script>
+</body>
+</html>

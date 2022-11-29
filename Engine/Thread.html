@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>JS E' SINGLE THREAD</title>
+</head>
+<body>
+    <script>
+        console.time();
+        /*Nel lasso di tempo in cui viene eseguito il
+        for la pagina è bloccata. Questo perchè JS è
+        single Thread. Semplificando vuol dire che c'è
+        un solo stack, inoltre la capienza dello stack
+        non è illimitata. Scriviamo una funzione ricorsiva
+        e visualizziamo l'errore.
+        
+        function a(){
+            a();
+        }
+        a();*/
+        
+        for(var i = 0; i < 3000000000; i++){
+            i=i+1;
+        }
+        console.timeEnd();
+    </script>
+</body>
+</html>

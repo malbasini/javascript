@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Engine</title>
+</head>
+<body>
+    <script>
+        //Errore di riferimento
+        /*--Produce il seguente errore Uncaught ReferenceError: a is not defined*/
+        console.log(a);
+        /*Definiamo la variabile a il risultato della dichiarazione
+        con var è undefined. Se dichiariamo la variabile con let o const
+        abbiamo lo stesso errore di riferimento. Con var avviene quell'operazione che
+        si chiama Hoisting ossia la variabile viene sollevata in alto. Definiamo
+        una funzione*/
+        var a = 10;
+        
+        test();
+       /*--Anche con le funzioni avviene il sollevamento (Hoisting) infatti
+       la funzione viene invocata primadella sua definizione e viene eseguita
+       correttamente.*/
+       function test(){
+        console.log('Ciao da test!');
+       } 
+
+       console.log(1);
+       const callback = () => {
+          console.log(2);
+       };
+       setTimeout(callback,5000);
+       /*--setTimeout invoca la callback dopo 5000 ms. setTimeout è una
+       funzione asincrona, infatti prima visualizziamo 1 e 3 poi dopo 5000 ms 2*/
+       console.log(3);
+    </script>
+</body>
+</html>
