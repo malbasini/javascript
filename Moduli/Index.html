@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduzione ai moduli</title>
+</head>
+<body>
+    <script type="module">
+         //import {fn_pubblica1 as fn_1,fattore,obj} from './lib.js'
+         //Possiamo anche importare tutto con il carattere *
+         import * as myLib from './lib.js'
+         console.log(myLib.fattore);
+         console.log(myLib.obj);
+         import User, { test } from './lib2.js';
+         const anna = new User('Anna',23);
+         anna.descrivimi();
+         test();
+    </script>
+</body>
+</html>
