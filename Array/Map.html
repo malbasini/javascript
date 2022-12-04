@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Array.prototype.map</title>
+</head>
+<body>
+    <script>
+       /*Metodo map, un semplice esempio è dividere per 2
+       tutti gli elementi di un array.*/
+
+       const numeri = [4,6,21,10,100];
+       //x è l'elemento ricevuto di volta in volta
+       //i è l'indice
+       //arr è l'array
+       const divisi = numeri.map((x,i,arr) => {
+            const divisione = x / 2;
+            return divisione;
+       });
+       console.log(numeri);
+       console.log(divisi);
+
+       const tv = [
+       {marca:"LG", modello:"65 Pollici", prezzo:820},
+       {marca:"Sony", modello:"55 Pollici", prezzo:680},
+       {marca:"Samsung", modello:"70 Pollici", prezzo:780},
+       {marca:"Sony", modello:"60 Pollici", prezzo:920},
+       {marca:"LG", modello:"50 Pollici", prezzo:620},
+       {marca:"Panasonic", modello:"65 Pollici", prezzo:1200},
+       ];
+       /*--Supponiamo di voler creare un array con i soli prezzi
+       La funzione riceve di volta in volta un elemento dell'array tv
+       che è un oggetto.*/
+       const prezzi = tv.map(p => p.prezzo);
+       /*--Come callback ho usato un arrow function. 
+       Si può scrivere anche:*/
+       const prezzi1 = tv.map(function(p){
+            return p.prezzo;
+       });
+       console.log(prezzi);
+    </script>
+        
+</body>
+</html>

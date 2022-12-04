@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduzione agli array</title>
+</head>
+<body>
+    <script>
+        /*--Ad ogni elemento dell'array è associato un indice
+        che parte da zero.*/
+        let auto = ['Fiat 500' , 'Lancia Y' , 'BMV X1'];
+        console.log(auto[0]);
+        /*--Per iterare tutti gli elementi di un array ci sono diversi
+        cicli, forEach, for of*/
+        for(let modello of auto){
+            console.log(modello);
+        }
+        /*--Dal momento che gli array sono oggetti possiamo
+        aggiungere proprietà. */
+        auto.info = 'Collezione di auto';
+        console.dir(auto.info);
+        /*--Un array viene creato dalla constructor
+        function Array. Il prototipo di a coincide
+        con Array.prototype.*/
+        let a = new Array(10,20,30);
+        console.dir(a);
+        console.log(Object.getPrototypeOf(a) === Array.prototype);
+        console.dir(Array);
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Array.prototype.splice</title>
+</head>
+<body>
+    <script>
+      let numeri = [1,2,4,5];
+      /*2 è l'indice di partenza non compreso, 0 sono gli elementi
+      che vogliamo eliminare, 3 è l'elemento che vogliamo
+      inserire in posizione 2*/
+      numeri.splice(2,0,3);
+      console.log(numeri);
+      numeri = [1,2,7];
+      numeri.splice(2,0,3,4,5,6);
+      console.log(numeri);
+      numeri = [1,2,3,4,5,6,6,7];
+      //Vogliamo rimuovere l'ultima occorrenza del numero 6.
+      numeri.splice(numeri.lastIndexOf(6),1);
+      console.log(numeri);
+    </script>
+</body>
+</html>

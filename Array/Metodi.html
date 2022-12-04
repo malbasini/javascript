@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Metodi su array</title>
+</head>
+<body>
+    <script>
+        let auto = ['Fiat 500' , 'Lancia Y' , 'BMV X1'];
+        /*--Se vogliamo inserire un elemento come ultimo
+        elemento dell'arrai usiamo il metodo push()*/
+        auto.push('Ferrari 458');
+        /*--Se vogliamo inserire un elemento come primo
+        elemento dell'arrai usiamo il metodo unshift()*/
+        auto.unshift('Mercedes series A4');
+        /*--Se vogliamo rimuovere l'ultimo elemento 
+        usiamo il metodo pop()*/
+        let rimosso = auto.pop();
+        console.log(rimosso);//Ferrari 458
+        /*--Se vogliamo rimuovere il primo elemento 
+        usiamo il metodo shift()*/
+        rimosso = auto.shift();
+        console.log(rimosso);//Mercedes series A4
+        //Usiamo il metodo forEach che riceve in input
+        //l'elemento e il suo indice
+        auto.forEach((item,i) => {
+            console.log(item);
+        });
+        let numeri = [3,2,5,6,2,9];
+        /*--Possiamo conoscere la prima occorrenza di un
+        elemento con indexOf(); */
+        console.log(numeri.indexOf(2));//1
+        /*--Possiamo conoscere l'ultima occorrenza di un
+        elemento con lastIndexOf(); */
+        console.log(numeri.lastIndexOf(2));//4
+    </script>
+</body>
+</html>
