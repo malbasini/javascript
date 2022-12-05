@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>DEEP COPY DI UN ARRAY</title>
+</head>
+<body>
+    <script>
+        let a = [0,1,2,[3,4],5,6];
+        /*Vogliamo copiare a in b*/
+        let b = a.slice();
+        b[0] = 100;
+        /*--La modifica la abbiamo sia in b che in a
+        Quato perchè quando assegnamo let b = a non facciamo
+        una copia ma passiamo soltanto il riferimento. Se vogliamo
+        copiare l'array dobbiamo usare il metodo slice senza
+        parametri. Con slice facciamo quella che viene chiamata
+        shallow copy, se il tipo è un dato primitivo copia l'array,
+        ma se all'interno di a inseriamo un array o un oggetto
+        una modifica ad essi si ripercuoterà sia su a che su b.
+        Se vogliamo effettuare una copia in profondità (DEEP COPY)
+        dobbiamo avvalerci o di una funzione o di dati JSON, 
+        un formato di interscambio dati.*/
+        b = JSON.parse(JSON.stringify(a));
+        b[3][0] = 100;
+        /*JSON.stringify trasforma l'array in stringa JSON, JSON.parse
+        trasforma di nuovo la stringa JSON in array javascript.*/
+        console.table({ a, b });
+
+    </script>  
+</body>
+</html>

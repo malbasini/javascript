@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>METODI DEI PROTOTYPE EVERY E SOME</title>
+</head>
+<body>
+    <script>
+        let numeri = [2,6,7,2,8] , check;
+        check = numeri.some( x  => x === 2);
+        console.log(check);//true
+        numeri = [2,6,4,10,8];
+        check = numeri.every(x => x % 2 === 0);
+        console.log(check);//true
+
+        let camere , disponibile;
+        camere = [
+            {numero:7 , tipo:'doppia', libera:false},
+            {numero:12 , tipo:'tripla', libera:false},
+            {numero:14 , tipo:'doppia', libera:true}
+        ];
+        /*Siamo interessati a sapere se ci sono camere doppie libere*/
+            camere.forEach((camera, i) => {
+            if (camera.tipo === 'doppia' && camera.libera === true){
+                disponibile = true;
+            }
+            else{
+                disponibile = false;
+            }
+        });
+        console.log(disponibile);//true
+        disponibile = camere.some(camera => camera.tipo === 'doppia' && camera.libera === true);
+        console.log(disponibile);//true
+    </script>
+</body>
+</html>
