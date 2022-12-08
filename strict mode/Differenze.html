@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Use strict</title>
+</head>
+<body>
+    <script>
+       "use strict";
+       var let = 20;
+       console.log(let);//Non ci viene segnalato alcun errore
+       //in modalità normale. Se passiamo alla modalità strict
+       //ci viene segnalato l'errore keyword reserved.
+       undefined = 10;
+       console.log(undefined);//undefined l'errore non viene
+       //segnalato in modalità normale. In strict mode abbiamo
+       //un errore "Type Error undefined is read-only".
+       let obj = {};
+       Object.defineProperties(obj, 'p1', {value:10 , writable:false});
+       obj.p1 = 20;
+       /*Il valore resta 10, ma non viene segnalato alcun errore in normal mode
+       in quanto la proprietà è read-only. In strict mode viene segnalato l'errore
+       "Type Error p1 is read-only".*/ 
+       let obj2 = {
+            p1:20
+       };
+       Object.preventExtensions(obj2);
+       obj2.p2 = 20;
+       console.log(obj2.p2);//undefined non ci viene segnalato alcun errore
+       //In modalità strict abbiamo un type error in quanto l'oggetto non è
+       //estensibile.
+       function fn(p1,p1,p2){
+         console.log(p1+p1+p2);//7 in quanto p1 assume l'ultimo valore assegnato
+         //cioè 2. In modalità strict abbiamo un errore di sintassi: "Argomento
+         //p1 duplicato".
+       }
+       fn(1,2,3);
+    </script>
+</body>
+</html>

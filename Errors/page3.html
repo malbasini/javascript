@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GESTIONE ERRORI APPLICAZIONE</title>
+</head>
+<body>
+    <script>
+       console.log(Object.getPrototypeOf(TypeError) === Error);
+       console.log(Object.getPrototypeOf(TypeError.prototype) === Error.prototype);
+       console.log(Error.prototype);
+
+       class RequestException extends Error{
+           constructor(err){
+              super(err.stato);
+              this.name = "Request Exception";
+              this.stato = err.stato;
+              this.risorsa = err.risorsa;
+           }
+           get infoErroreRichiesta(){
+                return `Errore ${this.name}\n Stato ${this.stato}\n Risorsa ${this.risorsa}`;
+           }
+           
+       }
+       try
+       {
+            //richiesta di rete
+            throw new RequestException({stato:'Not found',risorsa:'api/user'});
+       }
+       catch(err){
+        console.dir(err.infoErroreRichiesta);
+       }
+    </script>
+</body>
+</html>

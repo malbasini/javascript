@@ -5,51 +5,23 @@
     <title>Use strict</title>
 </head>
 <body>
-    <h2>Not Allowed in Strict Mode</h2>
     <script>
-        //L'utilizzo di una variabile, senza dichiararla, non è consentito:
+        //Per applicare la modalità script all'intero programma
+        //si usa l'istruzione "use strict"; come prima riga di codice.
+        //"use strict";
         "use strict";
-        a=3.14;
-        //L'utilizzo di un oggetto, senza dichiararlo, non è consentito:
-        x = {p1:10, p2:20};  // This will cause an error
-        //L'eliminazione di una variabile (o oggetto) non è consentita.
-        let y=3.14;
-        delete y;
-        //"use strict";
-        //L'eliminazione di una funzione non è consentita.
-        function x1(p1, p2) {};
-        delete x1;                // This will cause an error 
-        //Non è consentito duplicare il nome di un parametro:
-        function x2(p1, p1) {};   // This will cause an error
-        //I letterali numerici ottali non sono consentiti:
-        let x3 = 010;             // This will cause an error
-        //I caratteri di escape ottali non sono consentiti:
-        let x4 = "\010";            // This will cause an error
-        //"use strict";
-        //La scrittura su una proprietà di sola lettura non è consentita:
-        const obj = {};
-        Object.defineProperty(obj, "x", {value:0, writable:false});
-        obj.x = 3.14;            // This will cause an error
-        //Non è consentito scrivere su una proprietà get-only:
-        const obj1 = {get x() {return 0} };
-        obj1.x = 3.14;            // This will cause an error
-        //La parola arguments non può essere utilizzata come variabile:
-        let arguments = 3.14;    // This will cause an error
-        //L'istruzione with non è consentita:
-        with (Math){x6 = cos(2)}; // This will cause an error
-        //Per motivi di sicurezza, eval() non può creare variabili nell'ambito da cui è stato chiamato:
-        eval ("let x = 2");
-        alert (x);             // This will cause an error
-        /*--La parola chiave this nelle funzioni si comporta in modo diverso in 
-        modalità rigorosa.La parola chiave this si riferisce all'oggetto che ha 
-        chiamato la funzione. Se l'oggetto non è specificato, le funzioni 
-        in modalità rigorosa restituiranno undefined e le funzioni in 
-        modalità normale restituiranno l'oggetto globale (window):*/
-        function myFunction() {
-            alert(this); // will alert "window"
-          }
-          myFunction();
-
+        const numero = 10;
+        console.log(numero);
+        /*Se passiamo alla modalità strict abbiamo un errore di
+        riferimento perchè stiamo assegnado un valore ad una variabile
+        non dichiarata (numero = 10;). Mettiamo const numero = 10 per risolvere 
+        l'errore.*/
+        function fn(){
+            "use strict";
+            /*Il programma javascript opererà in modalità
+            sloppy (normale) se non mettiamo use strict all'inizio
+            mentre la funzione opererà in modalità strict.*/
+        }
     </script>
 </body>
 </html>

@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TRY CATCH</title>
+    <title>GESTIONE ERRORI</title>
 </head>
 <body>
-    <h2>JavaScript Error Handling</h2>
-
-    <p>Usare <b>catch</b> per visualizzare un errore.</p>
-
-    <p id="demo"></p>
-
     <script>
-    try {
-       /*--aalert doesn't exists*/ 
-       aalert("Welcome guest!");
-    }
-    catch(err) {
-       document.getElementById("demo").innerHTML = err.message;
-    }
-</script>
+        function fn(){
+            fn();
+        }
+        try{
+          //fn();
+          fn2();
+        }
+        catch(e){
+            /*L'oggetto passato al blocco catch è di tipo
+            internal error per la funzione ricorsiva. Abbiamo anche errori di riferimento.
+            Invochiamo una funzione che non è stata definita fn2().
+            Abbiamo un oggetto di tipo ReferenceError*/
+            console.dir(e);
+        }
+        console.log(1);
+    </script>
 </body>
 </html>

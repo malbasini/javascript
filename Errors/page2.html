@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione errori</title>
+</head>
+<body>
+<script>
+  try{
+     //fn();
+     throw new ReferenceError('Eccezione da noi sollevata');
+  }catch(err){
+     console.dir(err);
+     /*err è una istanza della constructor function
+     ReferenceError. Possiamo sollevare eccezioni noi stessi
+     con la sintassi throw new.*/
+  }finally{
+    console.log('vengo sempre eseguito');
+    /*Il blocco finally viene sempre eseguito, sia se si 
+    verificano errori oppure no.*/
+  }
+  //console.log(ReferenceError);
+  /*ReferenceError è una constructor function e noi sappiamo
+  che da una constructor function vengono create istanze tramite
+  la parola chiave new. Ad esempio invochiamo una funzione fn()
+  non definita.*/
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>strict mode e this</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function fn(){
+            console.log(this);//Riferimento all'oggetto window
+            //in modalità normale. Undefined in modalità strict
+            //console.log(fn.caller);
+            /*caller ci permette di sapere chi ha
+            invocato fn() in modalità strict abbiamo un type error, ci
+            viene impedito di risalire lo stack.*/
+        }
+        fn();
+        //Invochiamo fn su un valore primitivo.
+        fn.call(10);//Riferimento a Number in normal mode, valore 10 in strict mode.
+        fn.call(true);//Riferimento a Boolean in normal mode, valore true in strict mode.
+        fn.call(undefined);//Riferimento a window, undefined in strict mode
+        fn.call(null);//Riferimento a Window, null in strict mode.
+        fn.call(window);//Riferimento a window anche in strict mode
+        function fn_inv(){
+            fn();
+        }
+        fn_inv();
+    </script>
+</body>
+</html>
