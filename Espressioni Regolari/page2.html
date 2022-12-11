@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Oggetto RegExp Metodi</title>
+</head>
+<body>
+    <script>
+        //match, replace, serach
+        //Questi tre metodi fanno parte dell'oggetto String.
+        console.log(String.prototype);
+        let testo = 'Corso Corso JS';
+        let pattern = /corso/gi;
+        let pattern1 = /JS/gi;
+        let ris = testo.match(pattern);
+        console.log(ris);//Array di due elementi Corso
+        /*Grazie al metodo search possiamo conoscere la posizione della
+        prima occorrenza trovata nel testo.*/
+        let search = testo.search(pattern);
+        console.log(search);
+        /*Con il metodo replace possiamo effettuare delle sostituzioni.
+        Ad esempio vogliamo sostituire la sequenza JS con la parola JavaScript.*/
+        let replace = testo.replace(pattern1,'JavaScript');
+        console.log(replace);
+
+    </script>
+</body>
+</html>

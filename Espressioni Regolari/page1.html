@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Oggetto RegExp</title>
+</head>
+<body>
+    <script>
+        let obj = {}/*Quando invochiamo un oggetto letterale, internamente javascript
+        esegue new Object(); in modo che l'oggetto letterale erediti da Object.prototype.
+        la stessa cosa vale per le espressioni regolari, possiamo definirle sia in
+        modo letterale che dalla constructor function RegExp().*/
+        let testo = 'Corso Corso JavaScript. Sezione espressioni regolari';
+        const reg = /corso/gi;
+        const reg2 = new RegExp('corso','gi');
+        console.log(Object.getPrototypeOf(reg)===RegExp.prototype);//true
+        console.log(RegExp.prototype);
+        let ris = reg.exec(testo);
+        console.log(ris);/*Non abbiamo corrispondenza flag case insensitive
+        non impostato. Mettiamo il flag i. Dopo aver messo il flag vi è match.
+        Aggiungiamo al testo una doppia parola Corso. console.log(ris); si vede
+        che il motore javascript delle espressioni regolari trova solo la prima
+        occorrenza. Per trovare la seconda facciamo:*/
+        let ris2 = reg.exec(testo);
+        console.log(ris2);
+        ris = reg2.test(testo);
+        console.log(ris);
+    </script>
+</body>
+</html>
