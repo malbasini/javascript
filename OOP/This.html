@@ -30,8 +30,10 @@
         let obj3 = {
            p1 : 30, 
            fn : function(){
-              console.log(this.p1); //stampa 30. this è un riferimento all'oggetto obj.
+              console.log(this.p1); //stampa 30. this è un riferimento all'oggetto obj3.
+              console.log(this === obj3);
            }
+          
         };
         obj3.fn();
     </script>
