@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Symbol</title>
+</head>
+<body>
+    <script>
+        //CREAZIONE DI UN SYMBOL
+        let sim1 = Symbol('id');
+        let sim2 = Symbol('id');
+        /*Un simbolo rappresenta un valore unico e anonimo, Quello che mettiamo tra parentesi 
+        non va in nesssun modo a influenzare la creazione del Symbol. Quello che passiamo
+        è un etichetta per capire a cosa si riferisce quel Symbol. Vediamo cosa significa
+        unico e anonimo. se facciamo il seguente console.log:*/
+        console.log(sim1 == sim2);//False
+        console.log(Symbol() == Symbol());//False entrambe le invocazioni
+        //generano un valore univoco e anonimo.(Numero molto grande)
+        console.log(sim1);//NON ABBIAMO UN NUMERO MOLTO GRANDE 
+        //ABBIAMO SOLO L'INDICAZIONE SYMBOL (anonimo)
+        let obj = {
+            p1:10,
+            sim1:20,
+            //[sim1]:30,Sintassi corretta per aggiungere il simbolo all'oggetto
+            132144444414:30 //è equivalente a [sim1]:30 (Numero molto grande)
+        };
+        /*--Le proprietà sim1:20 e [sim1]:30 sono 2 proprietà completamente diverse. Immaginiamo
+        che nelle parentesi quadre ci sia un numero molto grande e unico. Inseriamo un numero
+        grande.*/
+        console.log(obj.sim1);
+        console.log(obj[sim1]);
+        console.log(obj[132144444414]);//Riusciamo correttamente ad accedere al valore 30.
+        /*Una prima applicazione dei simboli è quindi quando vogliamo evitare
+        conflitti tra proprietà.
+        Supponiamo di voler importare una libreria di terze parti e aggiungere
+        un nostro attributo id.*/
+        let user = {
+            id:1019,
+        };
+        //user.id = 1;Il problema è che così facendo andiamo a sovrascrivere il valore originario
+        //Per ovviare al problema usiamo un simbolo.
+        let id = Symbol();
+        user[id]=1;
+        console.log(user.id);//1019
+        console.log(user[id]);//1
+        //Un altro esempio di utilizzo è quando vogliamo passare ad una funzione 
+        //un valore univoco non replicabile.Noi vogliamo che le costanti ALTA e BASSA siano un
+        //valore univoco.
+        //const ALTA = 1;
+        //const BASSA = 2;
+        const ALTA = Symbol('1');
+        const BASSA = Symbol('2');
+        function allerta(tipo){
+           if(tipo === ALTA){
+            console.log('Allerta alta');
+           } else if (tipo === BASSA){
+            console.log('Allerta bassa'); 
+           }else{
+            console.log('Nessuna allerta da attivare');
+           }
+        }
+        allerta(ALTA);
+        allerta(BASSA);
+        allerta(1);//Senza un Symbol abbiamo il valore 'Allerta Alta'
+        //Noi non vogliamo questo comportamento, vogliamo attivare
+        //l'allerta solo attraverso le costanti ALTA e BASSA.Quindi
+        //anzichè assegnare 1 e 2 alle costanti assegnamo un simbolo
+        //valore univoco e non replicabile.
+    </script>
+</body>
+</html>

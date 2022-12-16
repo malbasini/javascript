@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Importare ed esportare valori da un generatore</title>
+</head>
+<body>
+    <script>
+        /*Con i generatori abbiamo a disposizione un meccanismo parziale
+        di esecuzione delle funzioni. Possiamo avviare la funzione ed eseguire
+        la funzione in base a come è stata suddivisa.*/
+        function *myGen(){
+            console.log('funzione myGen');
+            //yield 10;
+            //Immaginiamo questo yield (ora commentato) come una sorta di return parziale.
+            //Quindi esportiamo un valore dalla funzione all'esterno (valore 10)
+            let v1 = yield 10;//Reimportiamo il valore dopo averlo esportato e modificato.
+            console.log(v1);
+            console.log('Corso');
+            yield;
+            console.log('Javascript');
+        }
+        const gen = myGen();
+
+         /*con console.log(gen.next()); otteniamo un oggetto con value undefined e done = false.
+        done = true al terzo gen.next(); Se vogliamo che value non
+        abbia il valore undefined mettiamo il valore dopo yield.(10 nell'esempio)*/
+
+        let v1 = gen.next().value;//Accediamo al valore alla destra di yield cioè 10.
+        v1 += (Math.random() * 10) | 0;
+
+        gen.next(v1);//Con questa istruzione reimportiamo il valore nella funzione myGen().
+        //questo sarà il valore di ritorno di yield.
+        
+    </script>
+</body>
+</html>

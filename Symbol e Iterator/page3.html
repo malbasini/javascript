@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Implmentare il protocollo iterable</title>
+</head>
+<body>
+    <script>
+        /*Un oggetto iterable ci consente di personalizzare il modo
+        con cui una sequenza viene attraversata, ad esempio attraverso
+        un ciclo for of. Quello che noi vogliamo con l'oggetto rangeObj
+        è che la sequenza sia attraversata da from a to con un for of.
+        Per implementare il protocollo Iterable un oggetto deve avere
+        un metodo [Symbol.iterator](); Il protocollo Iterator deve
+        implementare una proprietà next il cui valore è una funzione.*/
+        let rangeObj = {
+            from : 10,
+            to : 16,
+            [Symbol.iterator](){
+                let current = this.from;
+                return {
+                    next:() => {
+                        return current <= this.to ?
+                        {value : current++, done:false}:
+                        {done:true}
+                    }  
+                }
+            }
+        };
+        for(item of rangeObj){
+            console.log(item);
+        }
+        let iteratore = rangeObj[Symbol.iterator]();//Oggetto Iterator
+        console.log(iteratore.next().value);//value 10
+        console.log(iteratore.next().value);//value 11
+        console.log(iteratore.next().value);//value 12
+        console.log(iteratore.next().value);//value 13
+        console.log(iteratore.next().value);//value 14
+        console.log(iteratore.next().value);//value 15
+        console.log(iteratore.next().value);//value 16
+        console.log(iteratore.next().value);//undefined
+
+        /*Anche una stringa è iterabile con un for of*/
+        let str = 'Corso Javascript';
+        for(lettera of str){
+            console.log(lettera);
+        }
+        console.log(String);
+        /*Se andiamo nel prototipo di String vediamo che implementa
+        [Symbol.iterator] quindi implementando Iterable possiamo fare
+        un for of su una stringa.*/
+    </script>
+</body>
+</html>

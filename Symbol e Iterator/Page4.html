@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Implmentare il protocollo async Iterable</title>
+</head>
+<body>
+    <script>
+        /*Possiamo implementare il protocollo Iterable con un
+        Iterator asincrono.[Symbol.asyncIterator]()*/
+        let rangeObj = {
+            from : 10,
+            to : 16,
+            [Symbol.asyncIterator](){
+                let current = this.from;
+                return {
+                    next:() => {
+                        return current <= this.to ?
+                        Promise.resolve({value : current++, done:false}):
+                        Promise.resolve({done:true})
+                    }  
+                }
+            }
+        };
+        console.log('inizio');
+        /*Dato che stiamo lavorando con le Promise (codice asincrono)
+        non possiamo fare un semplice for ma lo dobbiamo combinare
+        con la keyword await. Per dimostrare che stiamo lavorando
+        in modo asincrono mettiamo due console.log().*/
+        (async function(){
+            /*Errore di sintassi dobbiamo inserire il for await
+            all'interno di una funzione asincrona e auto invocarla.*/
+            for await (item of rangeObj){
+                console.log(item);
+            }
+        })();
+        console.log('fine');
+    </script>
+</body>
+</html>

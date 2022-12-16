@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Creare un iteratore infinito con i generatori</title>
+</head>
+<body>
+    <script>
+        /*I generatori implementano sia iterable che iterator,
+        dato che implementano iterable possiamo utilizzare un for
+        of per iterare sugli elementi.*/
+
+        function *gen(){
+            //yield 1;
+            //yield 2;
+            //yield 3;
+            //CREIAMO UN ITERATORE INFINITO
+            let index = 0;
+            while(true){
+                yield index++;
+            }
+        }
+        const genObj = gen();
+        console.log(genObj.next().value);
+        console.log(genObj.next().value);
+        console.log(genObj.next().value);
+        console.log(genObj.next().value);
+        console.log(genObj.next().value);
+        console.log(genObj.next().value);
+        //for(let n of genObj){
+        //    console.log(n);
+        //}
+    </script>
+</body>
+</html>

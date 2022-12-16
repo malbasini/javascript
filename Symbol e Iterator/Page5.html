@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduzione ai generatori</title>
+</head>
+<body>
+    <script>
+        /*Le funzioni come sappiamo sono un blocco di codice eseguite per intero o 
+        comunque fino al return. Con i generatori abbiamo a disposizione un meccanismo parziale
+        di esecuzione del codice delle funzioni. Possiamo avviare la funzione ed eseguire
+        lo stop in un certo punto. Facciamo eseguire una porzione di una funzione, poi un'altra
+        e così via, il tutto con il mantenimento dello stato interno.*/
+        function *myGen(){
+            console.log('funzione myGen');
+            yield;//Mettiamo in pausa la funzione
+            console.log('Corso');
+            yield;//Mettiamo in pausa la funzione
+            console.log('Javascript');
+        }
+        const gen = myGen();//Invochiamo la funzione myGen(); ma non visualizziamo il console.log 
+        //questo perchè perchè dobbiamo operare in modo
+        //diverso.L'invocazione di una funzione generatore ritorna un generator.
+        console.log(gen);//Oggetto di tipo Generator. Tramite questo oggetto possiamo
+        //eseguire le varie parti della funzione in base a come l'abbiamo suddivisa.
+        //I generatori implementano il protocollo Iterator, quindi possiamo usare il
+        //metodo next().
+        gen.next();//Visualizziamo correttamente il primo console.log().
+        gen.next();//Riprendiamo l'esecuzione della funzione e visualizziamo il secondo
+        //console.log().
+        gen.next();//Visualizziamo l'ultimo console.log().
+    </script>
+</body>
+</html>
